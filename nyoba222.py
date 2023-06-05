@@ -85,7 +85,7 @@ def rekomendasi_laptop():
             print("Tidak ada laptop yang ditemukan sesuai dengan pilihan Anda.")
 
 rekomendasi_laptop()
-
+#data struk
 input("masukkan nama anda : ")
 input("masukkan jarak anda : ")
 input("masukkan nomor handphone anda : ")
