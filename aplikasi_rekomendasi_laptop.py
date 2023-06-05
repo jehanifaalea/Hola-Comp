@@ -55,6 +55,6 @@ def rekomendasi_laptop():
     if pembayaran == "debit":
         print("Jenis Debit:", jenis_debit)
 
-# Memanggil fungsi rekomendasi_laptop()
+
 rekomendasi_laptop()
 
