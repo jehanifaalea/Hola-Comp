@@ -1,10 +1,10 @@
 {
     "laptop1": {
-      "merk": "Acer",
+      "merk": "Asus",
       "prosesor": "Intel i5",
-      "ram": 8,
+      "ram": 4,
       "rom": 256,
-      "harga": 5000000
+      "harga": 7000000
     },
     "laptop2": {
       "merk": "Asus",
