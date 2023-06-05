@@ -1,3 +1,15 @@
+<<<<<<< HEAD
+# File: data_laptop.py
+
+data_laptop = {
+    'laptop1': {'merk': 'HP 14s-dq0510TU ', 'prosesor': 'Intel UHD Graphics 600', 'ram': 4, 'rom': 256, 'harga': 4500000},
+    'laptop2': {'merk': 'HP 14s-fq0562AU ', 'prosesor': 'AMD Athlon', 'ram': 4, 'rom': 512, 'harga': 5000000},
+    'laptop3': {'merk': 'HP 15s-fq2705TU', 'prosesor': 'Intel i3', 'ram': 4, 'rom': 512, 'harga': 6000000},
+    'laptop4': {'merk': 'HP 14s-dq0510TU ', 'prosesor': 'Intel UHD Graphics 600', 'ram': 4, 'rom': 256, 'harga': 4500000},
+    'laptop5': {'merk': 'HP 14s-fq0562AU ', 'prosesor': 'AMD Athlon', 'ram': 4, 'rom': 512, 'harga': 5000000},
+    'laptop6': {'merk': 'HP 15s-fq2705TU', 'prosesor': 'Intel i3', 'ram': 4, 'rom': 512, 'harga': 6000000},
+}
+=======
 # File: data_laptop.py
 
 data_laptop = {
@@ -21,3 +33,4 @@ data_laptop = {
     'laptop18': {'merk': 'Lenovo IdeaPad Gaming 3', 'prosesor': 'AMD Ryzen 5', 'ram': '8', 'rom': '512', 'harga': 11000000},
     'laptop18': {'merk': 'Dell Inspiron 15 5509', 'prosesor': 'Intel Core i7', 'ram': '16', 'rom': '512', 'harga': 13000000}
 }
+>>>>>>> c230fdead4d7076a88c12df41581190423f3af6e
