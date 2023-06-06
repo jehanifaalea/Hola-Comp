@@ -13,13 +13,13 @@ def rekomendasi_laptop():
         tampilkan_ram = input("Apakah Anda ingin menampilkan berdasarkan RAM? (ya/tidak): ")
         if tampilkan_ram.lower() == "ya":
             ram = int(input("Masukkan ukuran RAM (GB) yang diinginkan: "))
-            laptop_rekomendasi = [laptop for laptop in laptop_rekomendasi if data_laptop[laptop]['ram'] == ram]
+            laptop_rekomendasi = [laptop for laptop in data_laptop if data_laptop[laptop]['ram'] == ram]
         
 
         tampilkan_rom = input("Apakah Anda ingin menampilkan berdasarkan ROM? (ya/tidak): ")
         if tampilkan_rom.lower() == "ya":
             rom = int(input("Masukkan ukuran ROM (GB) yang diinginkan: "))
-            laptop_rekomendasi = [laptop for laptop in laptop_rekomendasi if data_laptop[laptop]['rom'] == rom]
+            laptop_rekomendasi = [laptop for laptop in data_laptop if data_laptop[laptop]['rom'] == rom]
         
         else:
             tampilkan_harga = input("Apakah Anda ingin menampilkan berdasarkan rentang harga? (ya/tidak): ")
@@ -86,6 +86,7 @@ def rekomendasi_laptop():
 
 rekomendasi_laptop()
 #data struk
+print("======================================")
 input("masukkan nama anda : ")
-input("masukkan jarak anda : ")
+input("masukkan alamat anda : ")
 input("masukkan nomor handphone anda : ")
