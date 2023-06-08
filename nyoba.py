@@ -20,32 +20,9 @@ def rekomendasi_laptop():
         if tampilkan_rom.lower() == "ya":
             rom = int(input("Masukkan ukuran ROM (GB) yang diinginkan: "))
             laptop_rekomendasi = [laptop for laptop in laptop_rekomendasi if data_laptop[laptop]['rom'] == rom]
-        
-        print("Laptop rekomendasi berdasarkan spesifikasi:")
-        for laptop in laptop_rekomendasi:
-            print("- Merk:", data_laptop[laptop]['merk'])
-            print("- Prosesor:", data_laptop[laptop]['prosesor'])
-            print("- RAM:", data_laptop[laptop]['ram'], "GB")
-            print("- ROM:", data_laptop[laptop]['rom'], "GB")
-            print("- Harga:", data_laptop[laptop]['harga'])
-    else:
-        tampilkan_harga = input("Apakah Anda ingin menampilkan berdasarkan rentang harga? (ya/tidak): ")
-        
-        if tampilkan_harga.lower() == "ya":
-            min_harga = int(input("Masukkan harga minimum: "))
-            max_harga = int(input("Masukkan harga maksimum: "))
-            laptop_rekomendasi = [laptop for laptop in data_laptop if min_harga <= data_laptop[laptop]['harga'] <= max_harga]
-        else:
-            laptop_rekomendasi = list(data_laptop.keys())  
-        
-        tampilkan_merk = input("Apakah Anda ingin menampilkan berdasarkan merk? (ya/tidak): ")
-        
-        if tampilkan_merk.lower() == "ya":
-            merk = input("Masukkan merk yang diinginkan: ")
-            laptop_rekomendasi = [laptop for laptop in laptop_rekomendasi if data_laptop[laptop]['merk'] == merk]
-        
+
         print("Laptop rekomendasi:")
-        if laptop_rekomendasi:
+        if len(laptop_rekomendasi) > 0:
             for laptop in laptop_rekomendasi:
                 print("- Merk:", data_laptop[laptop]['merk'])
                 print("- Prosesor:", data_laptop[laptop]['prosesor'])
@@ -54,6 +31,45 @@ def rekomendasi_laptop():
                 print("- Harga:", data_laptop[laptop]['harga'])
         else:
             print("Tidak ada laptop yang ditemukan sesuai dengan pilihan Anda.")
+    
+    else:
+        tampilkan_harga = input("Apakah Anda ingin menampilkan berdasarkan rentang harga? (ya/tidak): ")
+        
+        if tampilkan_harga.lower() == "ya":
+            min_harga = int(input("Masukkan harga minimum: "))
+            max_harga = int(input("Masukkan harga maksimum: "))
+            laptop_rekomendasi = [laptop for laptop in data_laptop if min_harga <= data_laptop[laptop]['harga'] <= max_harga]
+            
+            print("Laptop rekomendasi:")
+            if len(laptop_rekomendasi) > 0:
+                for laptop in laptop_rekomendasi:
+                    print("- Merk:", data_laptop[laptop]['merk'])
+                    print("- Prosesor:", data_laptop[laptop]['prosesor'])
+                    print("- RAM:", data_laptop[laptop]['ram'], "GB")
+                    print("- ROM:", data_laptop[laptop]['rom'], "GB")
+                    print("- Harga:", data_laptop[laptop]['harga'])
+            else:
+                print("Tidak ada laptop yang ditemukan sesuai dengan pilihan Anda.")
+        
+        else:
+            laptop_rekomendasi = list(data_laptop.keys())  
+        
+            tampilkan_merk = input("Apakah Anda ingin menampilkan berdasarkan merk? (ya/tidak): ")
+        
+            if tampilkan_merk.lower() == "ya":
+                merk = input("Masukkan merk yang diinginkan: ")
+                laptop_rekomendasi = [laptop for laptop in laptop_rekomendasi if data_laptop[laptop]['merk'] == merk]
+        
+            print("Laptop rekomendasi:")
+            if len(laptop_rekomendasi) > 0:
+                for laptop in laptop_rekomendasi:
+                    print("- Merk:", data_laptop[laptop]['merk'])
+                    print("- Prosesor:", data_laptop[laptop]['prosesor'])
+                    print("- RAM:", data_laptop[laptop]['ram'], "GB")
+                    print("- ROM:", data_laptop[laptop]['rom'], "GB")
+                    print("- Harga:", data_laptop[laptop]['harga'])
+            else:
+                print("Tidak ada laptop yang ditemukan sesuai dengan pilihan Anda.")
 
 rekomendasi_laptop()
 
@@ -62,3 +78,4 @@ print("======================================")
 nama = input("Masukkan nama anda: ")
 alamat = input("Masukkan alamat anda: ")
 nomor_handphone = input("Masukkan nomor handphone anda: ")
+
