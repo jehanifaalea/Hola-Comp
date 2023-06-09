@@ -5,7 +5,7 @@ def welcome_message():
 
 def login():
     username = input("Masukkan username: ")
-    password = input("Masukkan password: ")
+    password = input("Masukkan passw1ord: ")
 
     with open('akun1.csv', 'r') as file:
         reader = csv.reader(file)

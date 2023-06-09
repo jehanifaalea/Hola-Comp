@@ -111,6 +111,7 @@ elif choice == '2':
     if sign_up():
         clear_screen()
         laptop_spec()
+
         
 else:
     print("Pilihan tidak valid!")
