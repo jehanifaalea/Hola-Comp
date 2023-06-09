@@ -31,7 +31,7 @@ def sign_up():
     return True
 
 def laptop_spec():
-    print("Pilih spesifikasi laptop:")
+    print("Pilih spesifikasi laptop (1/2/3):")
     print("1. Prosesor")
     print("2. RAM")
     print("3. ROM")
@@ -49,7 +49,7 @@ def laptop_spec():
 
 def laptop_processor():
     clear_screen()
-    print("Pilih jenis prosesor:")
+    print("Pilih jenis prosesor (1/2):")
     print("1. Intel")
     print("2. Ryzen")
 
@@ -58,23 +58,23 @@ def laptop_processor():
 
 def laptop_ram():
     clear_screen()
-    print("Pilih kapasitas RAM:")
+    print("Pilih kapasitas RAM (1/2/3/4):")
     print("1. 4 GB")
     print("2. 8 GB")
     print("3. 12 GB")
     print("4. 16 GB")
 
-    choice = input("Masukkan pilihan: ")
+    choice = input("Masukkan pilihan (1/2/3/4): ")
    
 
 def laptop_rom():
     clear_screen()
-    print("Pilih kapasitas ROM:")
+    print("Pilih kapasitas ROM (1/2/3):")
     print("1. 256 GB")
     print("2. 512 GB")
     print("3. 1024 GB")
 
-    choice = input("Masukkan pilihan: ")
+    choice = input("Masukkan pilihan (1/2/3): ")
 
 
 def laptop_recommendation(spec, price, brand):
@@ -99,7 +99,7 @@ def clear_screen():
 
 welcome_message()
 
-choice = input("Menu: \n1. Login \n2. Sign Up \nPilih menu: ")
+choice = input("Menu: \n1. Login \n2. Sign Up \nPilih menu (1/2): ")
 clear_screen()
 
 if choice == '1':
