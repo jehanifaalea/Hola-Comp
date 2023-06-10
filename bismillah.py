@@ -40,7 +40,7 @@ def main_menu():
     if choice == '1':
         laptop_spec()
     elif choice == '2':
-        laptop_ram()
+        accessories()
     elif choice == '3':
         print("Terima kasih telah menggunakan program kami!")
     else:
@@ -48,7 +48,7 @@ def main_menu():
         input("\nTekan Enter untuk kembali ke menu...")
         clear_screen()
         laptop_spec()
-        
+
 
 def laptop_spec():
     clear_screen()
@@ -279,6 +279,61 @@ def laptop_recommendation(spec, price, brand):
     else:
         print("Maaf, tidak ditemukan laptop yang sesuai dengan kriteria Anda.")
 
+def accessories():
+    clear_screen()
+    print("Tampilkan macam - macam aksesoris? ")
+    print("1. ya")
+    print("2. tidak")
+    chose = input("masukkan pilihan (1/2): ")
+    if chose == '1':
+        print("Pilih aksesoris (1/2/3/4):")
+        print("1. tas")
+        print("2. keyboard")
+        print("3. headset")
+        print("4. mouse")
+        choice = input("Masukkan pilihan (1/2/3/4): ")
+        if choice == '1':
+            selected_accessories = "tas"
+            clear_screen()
+            menu_accessories()
+        elif choice == '2':
+            selected_accessories = "keyboard"
+            clear_screen()
+            menu_accessories()
+        elif choice == '3':
+            selected_accessories = "headset"
+            clear_screen()
+            menu_accessories()
+        elif choice == '4':
+            selected_price_range = "mouse"
+            clear_screen()
+            menu_accessories()
+        else:
+            clear_screen()
+            print("Pilihan yang Anda masukkan belum benar, kembali ke menu awal.")
+            laptop_price_range()  
+    elif chose == '2':
+        laptop_brand()
+    else:
+        clear_screen()
+        print("Pilihan yang Anda masukkan belum benar, coba lagi.")
+        laptop_price_range()
+    
+def menu_accessories(brand, name, price):
+    aksesoris = pd.read_csv('data_aksesoris.csv')
+
+    filtered_aksesoris = aksesoris[
+        (aksesoris['merk'] == brand) |
+        (aksesoris['nama'] == name) |
+        (aksesoris['harga'] == price)
+    ]
+
+    if not filtered_aksesoris.empty:
+        print("Berikut adalah rekomendasi laptop:")
+        print(filtered_aksesoris)
+    else:
+        print("Maaf, tidak ditemukan laptop yang sesuai dengan kriteria Anda.")
+
 
 
 def clear_screen():
@@ -306,5 +361,3 @@ elif choice == '3':
         
 else:
     print("Pilihan tidak valid!")
-
-   
