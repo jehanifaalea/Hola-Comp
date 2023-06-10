@@ -227,9 +227,8 @@ def laptop_brand():
         print("1. Asus")
         print("2. Acer")
         print("3. Lenovo")
-        print("4. Apple")
-        print("5. HP")
-        print("6. Dell")
+        print("4. HP")
+        print("5. Dell")
         choice = input("Masukkan pilihan (1/2/3/4/5/6): ")
         if choice == '1':
             selected_brand = "Asus"
@@ -244,14 +243,10 @@ def laptop_brand():
             clear_screen()
             laptop_recommendation()
         elif choice == '4':
-            selected_brand = "Apple"
-            clear_screen()
-            laptop_recommendation()
-        elif choice == '5':
             selected_brand = "HP"
             clear_screen()
             laptop_recommendation()
-        elif choice == '6':
+        elif choice == '5':
             selected_brand = "Dell"
             clear_screen()
             laptop_recommendation()
