@@ -214,7 +214,6 @@ def laptop_price_range():
         clear_screen()
         print("Pilihan yang Anda masukkan belum benar, coba lagi.")
         laptop_price_range()
-        
 
 def laptop_brand():
     global selected_brand
