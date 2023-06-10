@@ -36,20 +36,30 @@ def main_menu():
     print("1. Laptop")
     print("2. Aksesoris Laptop")
     print("3. Keluar")
-
-
+    choice = input("Masukkan pilihan (1/2/3): ")
+    if choice == '1':
+        laptop_spec()
+    elif choice == '2':
+        laptop_ram()
+    elif choice == '3':
+        print("Terima kasih telah menggunakan program kami!")
+    else:
+        print("Pilihan yang Anda masukkan belum benar, coba lagi.")
+        input("\nTekan Enter untuk kembali ke menu...")
+        clear_screen()
+        laptop_spec()
+        
 
 def laptop_spec():
     clear_screen()
-    print("Tampilkan Spesifikasi Laptop yang tersedia: \n1. prosesor \n2. ram \n3. rom")
+    print("Tampilkan Spesifikasi Laptop yang tersedia:")
     laptop_processor()
-
     
 def laptop_processor():
     clear_screen()
     global selected_processor 
     selected_processor = [] 
-    print("Tampilkan spesifikasi laptop berdasarkan prosesor? ")
+    print("Tampilkan spesifikasi laptop berdasarkan prosessor? ")
     print("1. ya")
     print("2. tidak")
     chose = input("masukkan pilihan (1/2): ")
@@ -117,7 +127,7 @@ def laptop_ram():
         else:
             clear_screen()
             print("Pilihan yang Anda masukkan belum benar, coba lagi.")
-            laptop_ram()
+            laptop_rom()
     elif chose == '2':
         laptop_rom()
     else:
@@ -256,10 +266,10 @@ def laptop_recommendation(spec, price, brand):
     laptops = pd.read_csv('data laptop.csv')
 
     filtered_laptops = laptops[
-        (laptops['merk'] == brand) or
-        (laptops['prosesor'] == spec) or
-        (laptops['ram'] == selected_ram) or
-        (laptops['rom'] == selected_rom) or
+        (laptops['merk'] == brand) |
+        (laptops['prosesor'] == spec) |
+        (laptops['ram'] == selected_ram) |
+        (laptops['rom'] == selected_rom) |
         (laptops['harga'] == price)
     ]
 
@@ -283,7 +293,7 @@ clear_screen()
 if choice == '1':
     if login():
         clear_screen()
-        laptop_spec()
+        main_menu()
         
         
 elif choice == '2':
