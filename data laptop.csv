@@ -4,11 +4,11 @@ Dell, Inspiron 14, Intel Core i7, 12, 512, 8500000
 Lenovo, Ideapad S340, Intel Core i5, 8, 1024, 8500000
 Asus, TUF Gaming A15, AMD Ryzen 7, 8, 512, 1200000
 Hp, Omen 15, Intel Core i7, 12, 1024, 14000000
+Hp, Omen 15, AMD Ryzen 7, 16, 512, 14000000
 Dell, G5 15, Intel Core i7, 8, 512, 12000000
 Dell, G5 15 5505, Intel Core i7, 16, 512, 21000000
 Lenovo, Legion 7, AMD Ryzen 7, 12, 1024, 18000000
 HP, Spectre x360, Intel Core i7, 8, 512, 17000000
-Lenovo, Legion 7, AMD Ryzen 7, 12, 1024, 18000000
 Asus, TUF Gaming A15 FA507, AMD Ryzen 7, 8, 512, 18000000
 Apple, MacBook Pro 16, Intel Core i7, 16, 512, 30000000
 HP, Spectre x360 15, Intel Core i7, 16, 1024, 3000000
@@ -33,3 +33,18 @@ HP, 14s, AMD Ryzen 7, 8, 512, 10000000
 Dell, Inspiron 15 5509, Intel Core i7, 16, 512, 13000000
 HP, Omen X 2S, Intel Core i9, 16, 1024, 23000000
 Acer, Predator Triton 500, Intel Core i7, 16, 1024, 25000000
+Asus, VivoBook 14, Intel Core i5, 8, 512. 6000000
+Lenovo, IdeaPad Slim 3, AMD Ryzen 5, 8, 256, 6500000
+Acer, Swift 3, Intel Core i5, 8, 512, 7000000
+Hp, Pavilion x360, Intel Core i3, 8, 256, 7500000
+Hp, Pavilion 14, AMD Ryzen 5, 8, 512, 9000000
+Dell, Inspiron 14 5000, 8, 512, 90000000
+Lenovo, IdeaPad 5, AMD Ryzen 5, 8, 512, 8500000
+Asus, VivoBook S14, Intel Core i5, 8, 512, 7000000
+Asus, ROG Strix G15, Intel Core i5, 8, 512, 11000000
+Lenovo, Legion 5, AMD Ryzen 5, 8, 512, 12000000
+Acer, Predator Helios 300, Intel Core i7, 16, 1024, 14000000
+Asus, Zenbook 14, Intel Core i5, 16, 512, 11000000
+Lenovo, Thinkpad E14, AMD Ryzen 7, 16, 512, 11800000
+Hp, Envy x360, AMD Ryzen 7, 16, 512, 14000000
+Dell, XPS 13, Intel Core i7, 16, 512, 15000000
