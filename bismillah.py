@@ -48,6 +48,7 @@ def main_menu():
         input("\nTekan Enter untuk kembali ke menu...")
         clear_screen()
         laptop_spec()
+        
 
 def laptop_spec():
     clear_screen()
