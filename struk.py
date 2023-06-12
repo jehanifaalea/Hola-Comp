@@ -2,8 +2,8 @@ import pandas as pd
 import datetime
 
 def hitung_total_harga(laptop_id, aksesoris_id, biaya_pengiriman):
-    df_laptop = pd.read_csv('data laptop.csv')
-    df_aksesoris = pd.read_csv('data_aksesoris.csv')
+    df_laptop = pd.read_csv('D:\Hola Comp\Hola-Comp\data_laptop.csv')
+    df_aksesoris = pd.read_csv('D:\Hola Comp\Hola-Comp\data_aksesoris.csv')
 
     # Mengambil harga laptop berdasarkan laptop_id
     laptop_row = df_laptop[df_laptop['id'] == laptop_id]
@@ -37,7 +37,8 @@ def generate_struk(nama_pelanggan, laptop_row, aksesoris_row, biaya_pengiriman, 
     return struk
 
 def main():
-    df_laptop = pd.read_csv('data_laptop.csv')
+    df_laptop = pd.read_csv('D:\Hola Comp\Hola-Comp\data_laptop.csv')
+    
 
     print("Selamat datang di toko kami!")
     nama_pelanggan = input("Masukkan nama Anda: ")
