@@ -3,7 +3,9 @@ import pandas as pd
 
 def welcome_message():
     clear_screen()
-    print("Selamat datang di Toko Hola-Comp!")
+    print("===================== WELCOME =====================")
+    print("        Selamat datang di Toko Hola-Comp!")
+    print("===================================================")
 
 def login():
     username = input("Masukkan username: ")
@@ -54,11 +56,18 @@ def laptop_spec():
     clear_screen()
     print("Tampilkan Spesifikasi Laptop yang tersedia:")
     laptop_processor()
+
+selected_processor = ""
+selected_ram = 0
+selected_rom = 0
+max_price = 0
+min_price = 0
+selected_brand = ""
+
     
 def laptop_processor():
     clear_screen()
     global selected_processor 
-    selected_processor = [] 
     print("Tampilkan spesifikasi laptop berdasarkan prosessor? ")
     print("1. ya")
     print("2. tidak")
@@ -96,7 +105,6 @@ def laptop_processor():
 def laptop_ram():
     clear_screen()
     global selected_ram
-    selected_ram = []
     print("Tampilkan spesifikasi laptop berdasarkan ram? ")
     print("1. ya")
     print("2. tidak")
@@ -139,7 +147,6 @@ def laptop_ram():
 def laptop_rom():
     clear_screen()
     global selected_rom  
-    selected_rom = []
     print("Tampilkan spesifikasi laptop berdasarkan rom? ")
     print("1. ya")
     print("2. tidak")
@@ -171,11 +178,11 @@ def laptop_rom():
         clear_screen()
         print("Pilihan yang Anda masukkan belum benar, coba lagi.")
         laptop_rom()
+ 
 
 
 def laptop_price_range():
     global selected_price_range
-    selected_price_range = []
     clear_screen()
     print("Tampilkan spesifikasi laptop berdasarkan rentang harga? ")
     print("1. ya")
@@ -217,7 +224,6 @@ def laptop_price_range():
 
 def laptop_brand():
     global selected_brand
-    selected_brand = ""
     clear_screen()
     print("Tampilkan spesifikasi laptop berdasarkan merk? ")
     print("1. ya")
@@ -262,23 +268,35 @@ def laptop_brand():
         print("Pilihan yang Anda masukkan belum benar, coba lagi.")
         laptop_brand()
 
-def laptop_recommendation(spec, price, brand):
-    laptops = pd.read_csv('data laptop.csv')
+def laptop_recommendation():
+    laptops = pd.read_csv('C:/Users/USER/Documents/baruu/Hola-Comp/data_laptop.csv')
 
-    filtered_laptops = laptops[
-        (laptops['merk'] == brand) |
-        (laptops['prosesor'] == spec) |
-        (laptops['ram'] == selected_ram) |
-        (laptops['rom'] == selected_rom) |
-        (laptops['harga'] == price)
-    ]
+    # Assign scores based on criteria
+    condition = laptops
 
-    if not filtered_laptops.empty:
+    if selected_processor != "":
+        condition = condition[condition['prosesor'] == selected_processor]
+
+    if selected_brand != "":
+        condition = condition[condition['merk'] == selected_brand]
+
+    if selected_ram != 0:
+        condition = condition[condition['ram'] == selected_ram]
+
+    if selected_rom != 0:
+        condition = condition[condition['rom'] == selected_rom]
+
+    if min_price > 0:
+        condition = condition[condition['harga'] <= max_price]
+        condition = condition[condition['harga'] >= min_price]
+
+    if not condition.empty:
         print("Berikut adalah rekomendasi laptop:")
-        print(filtered_laptops)
+        print(condition)
     else:
-        print("Maaf, tidak ditemukan laptop yang sesuai dengan kriteria Anda.")
+        print("Maaf, tidak ditemukan laptop yang sesuai dengan kriteria Anda.")
 
+selected_accessories = ""
 def accessories():
     clear_screen()
     print("Tampilkan macam - macam aksesoris? ")
@@ -305,7 +323,7 @@ def accessories():
             clear_screen()
             menu_accessories()
         elif choice == '4':
-            selected_price_range = "mouse"
+            selected_accessories = "mouse"
             clear_screen()
             menu_accessories()
         else:
@@ -319,21 +337,22 @@ def accessories():
         print("Pilihan yang Anda masukkan belum benar, coba lagi.")
         laptop_price_range()
     
-def menu_accessories(brand, name, price):
-    aksesoris = pd.read_csv('data_aksesoris.csv')
+def menu_accessories():
+    aksesoris = pd.read_csv('C:/Users/USER/Documents/baruu/Hola-Comp/data_aksesoris.csv')
+    conditions = aksesoris
 
-    filtered_aksesoris = aksesoris[
-        (aksesoris['merk'] == brand) |
-        (aksesoris['nama'] == name) |
-        (aksesoris['harga'] == price)
-    ]
+    if selected_accessories != "":
+        conditions = conditions[conditions['nama'] == selected_accessories]
+    if selected_accessories != "":
+        conditions = conditions[['merek'] == selected_accessories]
+    if selected_accessories != "":
+        conditions = conditions[['harga'] == selected_accessories]
 
-    if not filtered_aksesoris.empty:
+    if not conditions.empty:
         print("Berikut adalah rekomendasi laptop:")
-        print(filtered_aksesoris)
+        print(conditions)
     else:
         print("Maaf, tidak ditemukan laptop yang sesuai dengan kriteria Anda.")
-
 
 
 def clear_screen():
