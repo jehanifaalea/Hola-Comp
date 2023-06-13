@@ -15,33 +15,33 @@ def login():
         reader = csv.reader(file)
         for row in reader:
             if row[0] == username and row[1] == password:
-                clear_screen()
                 print("Login berhasil!")
-                main_menu()
                 return True
 
     print("Username atau password salah. ")
     if login():
         clear_screen()
-        welcome_message()
-        main_menu()
+        main()
     return False
-    
-    
 
 def sign_up():
     username = input("Masukkan username baru: ")
     password = input("Masukkan password baru: ")
 
+    with open('akun.csv', 'r') as file:
+        reader = csv.reader(file)
+        for row in reader:
+            if row[0] == username:
+                print("Username sudah terdaftar.")
+                if sign_up():
+                    clear_screen()
+                    main()
+                return False
     with open('akun.csv', 'a', newline='') as file:
         writer = csv.writer(file)
         writer.writerow([username, password])
-
-    print("Akun berhasil dibuat!")
-    print("===Selamat datang(username)=====")
-    return True
-
-username = ""
+        print("Akun berhasil dibuat!")
+        return True 
 
 def main_menu():
     clear_screen()
@@ -61,7 +61,7 @@ def main_menu():
     elif choice == '3':
         clear_screen()
         print("Terima kasih telah menggunakan program kami!")
-        login()
+        main()
     else:
         print("Pilihan yang Anda masukkan belum benar, coba lagi.")
         input("\nTekan Enter untuk kembali ke menu...")
@@ -98,42 +98,53 @@ def laptop_processor():
         if choice == '1':
             clear_screen()
             selected_processor = "Intel"
-            input_prosesor = input("Masukkan prosesor Intel yang diinginkan: \n1. Intel i3, \n2. Intel i5, \n3. Intel core i3, \n4. Intel core i5, \n5. Intel core i7, \n6. Intel core i9, \n7. Intel UHD Graphics 600")
-            choice = input("Masukkan pilihan (1/2/3/4/5/6/7): ")
-            if choice == '1':
+            input_prosesor = print("Masukkan prosesor Intel yang diinginkan: \n1. Intel i3 \n2. Intel i5 \n3. Intel core i3 \n4. Intel core i5 \n5. Intel core i7 \n6. Intel core i9 \n7. Intel UHD Graphics 600")
+            prosesor_intel = input("Masukkan pilihan (1/2/3/4/5/6/7): ")
+            if prosesor_intel == '1':
                 selected_processor = 'Intel i3'
                 clear_screen()
                 laptop_ram()
-            if choice == '2':
+            if prosesor_intel == '2':
                 selected_processor = 'Intel i5'
                 clear_screen()
                 laptop_ram()
-            if choice == '3':
+            if prosesor_intel == '3':
                 selected_processor = 'Intel core i3'
                 clear_screen()
                 laptop_ram()
-            if choice == '4':
+            if prosesor_intel == '4':
                 selected_processor = 'Intel core i5'
                 clear_screen()
                 laptop_ram()
-            if choice == '5':
+            if prosesor_intel == '5':
                 selected_processor = 'Intel core i7'
                 clear_screen()
                 laptop_ram()
-            if choice == '6': 
+            if prosesor_intel == '6': 
                 selected_processor = 'Intel core i9'
                 clear_screen()
                 laptop_ram()
-            if choice == '7':
+            if prosesor_intel == '7':
                 selected_processor = 'Intel UHD Graphics 600'
                 clear_screen()
                 laptop_ram()
         elif choice == '2':
             clear_screen()
             selected_processor = "Ryzen"
-            input_prosesor = input("Masukkan prosesor Ryzen yang diinginkan: ")
-            selected_processor += " " + input_prosesor  
-            laptop_ram()
+            input_prosesor = print("Masukkan prosesor Ryzen yang diinginkan: \n1. AMD Ryzen 5600H \n2. AMD Ryzen 5 \n3. AMD Ryzen 7")
+            prosesor_ryzen = input("Masukkan pilihan(1/2): ")
+            if prosesor_ryzen == '1':
+                selected_processor = 'AMD Ryzen 5600H'
+                clear_screen
+                laptop_ram()
+            if prosesor_ryzen == '2':
+                selected_processor = 'AMD Ryzen 5'
+                clear_screen
+                laptop_ram
+            if prosesor_ryzen == '3':
+                selected_processor = 'AMD Ryzen 7'
+                clear_screen
+                laptop_ram()
         else:
             clear_screen()
             print("Pilihan yang Anda masukkan belum benar, coba lagi.")
@@ -393,21 +404,27 @@ def clear_screen():
     import os
     os.system('cls' if os.name == 'nt' else 'clear')
 
-welcome_message()
-
-choice = input("Menu: \n1. Login \n2. Sign Up \nPilih menu (1/2): ")
-clear_screen()
-
-if choice == '1':
-    if login():
+def main():
+    welcome_message()
+    choice = input("Menu: \n1. Login \n2. Sign Up \n3. Exit \nPilih menu (1/2/3): ")
+    clear_screen()
+    if choice == '1':
+        if login():
+            clear_screen()
+            main_menu()
+        
+        
+    elif choice == '2':
+        if sign_up():
+            clear_screen()
+            laptop_spec()
+    elif choice == '3':
         clear_screen()
-        main_menu()
+        print("=====T E R I M A  K A S I H====")
+        print("Telah menggunakan program kami!")
         
-        
-elif choice == '2':
-    if sign_up():
-        clear_screen()
-        laptop_spec()
-        
-else:
-    print("Pilihan tidak valid!")
+    else:
+        print("Pilihan tidak valid!")
+
+if __name__ == '__main__':
+    main()
