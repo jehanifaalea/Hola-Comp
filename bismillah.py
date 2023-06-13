@@ -18,8 +18,13 @@ def login():
                 print("Login berhasil!")
                 return True
 
-    print("Username atau password salah.")
+    print("Username atau password salah. ")
+    if login():
+        clear_screen()
+        main_menu()
     return False
+    
+    
 
 def sign_up():
     username = input("Masukkan username baru: ")
@@ -269,32 +274,16 @@ def laptop_brand():
         laptop_brand()
 
 def laptop_recommendation():
-    laptops = pd.read_csv('C:/Users/USER/Documents/baruu/Hola-Comp/data_laptop.csv')
+    data = pd.read_csv('C:/Users/USER/Documents/baruu/Hola-Comp/data_laptop.csv')
 
-    # Assign scores based on criteria
-    condition = laptops
 
-    if selected_processor != "":
-        condition = condition[condition['prosesor'] == selected_processor]
+    filtered_data = data
+    if selected_brand:
+        filtered_data = filtered_data[filtered_data['merk'] == selected_brand]
+    if selected_processor:
+        filtered_data = filtered_data[filtered_data['prosesor'] == selected_processor]
 
-    if selected_brand != "":
-        condition = condition[condition['merk'] == selected_brand]
-
-    if selected_ram != 0:
-        condition = condition[condition['ram'] == selected_ram]
-
-    if selected_rom != 0:
-        condition = condition[condition['rom'] == selected_rom]
-
-    if min_price > 0:
-        condition = condition[condition['harga'] <= max_price]
-        condition = condition[condition['harga'] >= min_price]
-
-    if not condition.empty:
-        print("Berikut adalah rekomendasi laptop:")
-        print(condition)
-    else:
-        print("Maaf, tidak ditemukan laptop yang sesuai dengan kriteria Anda.")
+    print(filtered_data)
 
 selected_accessories = ""
 def accessories():
