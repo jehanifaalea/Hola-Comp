@@ -17,14 +17,16 @@ def login():
             if row[0] == username and row[1] == password:
                 clear_screen()
                 print("Login berhasil!")
-                main_menu()
+                print("===================== WELCOME =====================")
+                print("Selamat datang,",username)
+                print("===================================================")
+                main_menu(username)
                 return True
 
     print("Username atau password salah. ")
-    if login():
+    if login(username):
         clear_screen()
-        welcome_message()
-        main_menu()
+
     return False
     
     
@@ -43,11 +45,10 @@ def sign_up():
 
 username = ""
 
-def main_menu():
+def main_menu(username):
     clear_screen()
-    global username
     print("===================== WELCOME =====================")
-    print("        Selamat datang",(username))
+    print("             Selamat datang",username)
     print("===================================================")
     print("Main Menu:")
     print("1. Laptop")
@@ -372,7 +373,7 @@ def accessories():
         laptop_price_range()
     
 def menu_accessories():
-    aksesoris = pd.read_csv('D:\Hola Comp\Hola-Comp\data_aksesoris.csv')
+    aksesoris = pd.read_csv('D:/Hola Comp/Hola-Comp/data_aksesoris.csv')
     conditions = aksesoris
 
     if selected_accessories != "":
@@ -401,7 +402,7 @@ clear_screen()
 if choice == '1':
     if login():
         clear_screen()
-        main_menu()
+        main_menu(username)
         
         
 elif choice == '2':
