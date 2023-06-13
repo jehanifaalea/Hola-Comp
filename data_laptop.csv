@@ -1,5 +1,5 @@
 merk,tipe,prosesor,ram,rom,harga
-Asus,Vivobook Pro M3400QA,AMD Ryen 5600H,8,512,13000000
+Asus,Vivobook Pro M3400QA,AMD Ryzen 5600H,8,512,13000000
 Dell,Inspiron 14,Intel Core i7,12,512,8500000
 Lenovo,Ideapad S340,Intel Core i5,8,1024,8500000
 Asus,TUF Gaming A15,AMD Ryzen 7,8,512,1200000
@@ -14,10 +14,8 @@ HP,Spectre x360 15,Intel Core i7,16,1024,3000000
 Acer,Predator Helios 16,Intel Core i7,16,1024,28000000
 Lenovo,IdeaPad Gaming 3,AMD Ryzen 5,8,512,11000000
 HP,14s-dq0510TU,Intel UHD Graphics 600,4,256,4500000
-HP,14s-fq0562AU,AMD Athlon,4,512,5000000
 HP,15s-fq2705TU,Intel i3,4,512,6000000
 HP,14s-dq0510TU,Intel UHD Graphics 600,4,256,4500000
-HP,14s-fq0562AU,AMD Athlon,4,512,5000000
 HP,15s-fq2705TU,Intel i3,4,512,6000000
 Asus,Zenbook Notebook UX482EAR Oled,Intel i5,8,512,19000000
 Asus,Zenbook Notebook UP5401ZA Oled,Intel i5,8,512,18000000
@@ -37,7 +35,6 @@ Lenovo,IdeaPad Slim 3,AMD Ryzen 5,8,256,6500000
 Acer,Swift 3,Intel Core i5,8,512,7000000
 Hp,Pavilion x360,Intel Core i3,8,256,7500000
 Hp,Pavilion 14,AMD Ryzen 5,8,512,9000000
-Dell,Inspiron 14 5000,8,512,90000000
 Lenovo,IdeaPad 5,AMD Ryzen 5,8,512,8500000
 Asus,VivoBook S14,Intel Core i5,8,512,7000000
 Asus,ROG Strix G15,Intel Core i5,8,512,11000000

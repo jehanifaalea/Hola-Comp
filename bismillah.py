@@ -119,9 +119,20 @@ def laptop_processor():
         elif choice == '2':
             clear_screen()
             selected_processor = "Ryzen"
-            input_prosesor = input("Masukkan prosesor Ryzen yang diinginkan: ")
-            selected_processor += " " + input_prosesor  
-            laptop_ram()
+            input_prosesor = input("Masukkan prosesor Ryzen yang diinginkan: \n1. AMD Ryzen 5600H, \n2. AMD Ryzen 5, \n3. AMD Ryzen 7")
+            prosesor_ryzen = input("Masukkan pilihan(1/2): ")
+            if prosesor_ryzen == '1':
+                selected_processor = 'AMD Ryzen 5600H'
+                clear_screen
+                laptop_ram()
+            if prosesor_ryzen == '2':
+                selected_processor = 'AMD Ryzen 5'
+                clear_screen
+                laptop_ram
+            if prosesor_ryzen == '3':
+                selected_processor = 'AMD Ryzen 7'
+                clear_screen
+                laptop_ram()
         else:
             clear_screen()
             print("Pilihan yang Anda masukkan belum benar, coba lagi.")
