@@ -81,9 +81,36 @@ def laptop_processor():
         if choice == '1':
             clear_screen()
             selected_processor = "Intel"
-            input_prosesor = input("Masukkan prosesor Intel yang diinginkan: ")
-            selected_processor += " " + input_prosesor  
-            laptop_ram()
+            input_prosesor = input("Masukkan prosesor Intel yang diinginkan: \n1. Intel i3, \n2. Intel i5, \n3. Intel core i3, \n4. Intel core i5, \n5. Intel core i7, \n6. Intel core i9, \n7. Intel UHD Graphics 600")
+            prosesor_intel = input("Masukkan pilihan (1/2/3/4/5/6/7): ")
+            if prosesor_intel == '1':
+                selected_processor = 'Intel i3'
+                clear_screen()
+                laptop_ram()
+            if prosesor_intel == '2':
+                selected_processor = 'Intel i5'
+                clear_screen()
+                laptop_ram()
+            if prosesor_intel == '3':
+                selected_processor = 'Intel core i3'
+                clear_screen()
+                laptop_ram()
+            if prosesor_intel == '4':
+                selected_processor = 'Intel core i5'
+                clear_screen()
+                laptop_ram()
+            if prosesor_intel == '5':
+                selected_processor = 'Intel core i7'
+                clear_screen()
+                laptop_ram()
+            if prosesor_intel == '6': 
+                selected_processor = 'Intel core i9'
+                clear_screen()
+                laptop_ram()
+            if prosesor_intel == '7':
+                selected_processor = 'Intel UHD Graphics 600'
+                clear_screen()
+                laptop_ram()
         elif choice == '2':
             clear_screen()
             selected_processor = "Ryzen"
