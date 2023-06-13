@@ -38,7 +38,7 @@ def generate_struk(nama_pelanggan, laptop_row, aksesoris_row, biaya_pengiriman, 
 
 def main():
     df_laptop = pd.read_csv('D:\Hola Comp\Hola-Comp\data_laptop.csv')
-    
+    df_aksesoris = pd.read_csv('D:\Hola Comp\Hola-Comp\data_aksesoris.csv')
 
     print("Selamat datang di toko kami!")
     nama_pelanggan = input("Masukkan nama Anda: ")
