@@ -16,11 +16,11 @@ def login():
         for row in reader:
             if row[0] == username and row[1] == password:
                 print("Login berhasil!")
-                main_menu()
+                main_menu(username)
                 return True
 
     print("Username atau password salah. ")
-    if login(username):
+    if login():
         clear_screen()
         welcome_message()
         main_menu()
@@ -47,7 +47,7 @@ def sign_up():
 
 username = ""
 
-def main_menu():
+def main_menu(username):
     clear_screen()
     print("===================== WELCOME =====================")
     print("             Selamat datang",username)
@@ -64,7 +64,7 @@ def main_menu():
     elif choice == '3':
         clear_screen()
         print("Terima kasih telah menggunakan program kami!")
-        main()
+        login()
     else:
         print("Pilihan yang Anda masukkan belum benar, coba lagi.")
         input("\nTekan Enter untuk kembali ke menu...")
@@ -343,6 +343,7 @@ def laptop_recommendation():
     if harga :
         filtered_data = filtered_data[filtered_data['harga'] == harga]
     print(filtered_data)
+    
 
 selected_accessories = ""
 def accessories():
@@ -407,28 +408,26 @@ def clear_screen():
     import os
     os.system('cls' if os.name == 'nt' else 'clear')
 
-welcome_message()
 
-choice = input("Menu: \n1. Login \n2. Sign Up \nPilih menu (1/2): ")
-clear_screen()
-
-if choice == '1':
-    if login():
-        clear_screen()
-        main_menu()
+def main():
+    welcome_message()
+    choice = input("Menu: \n1. Login \n2. Sign Up \nPilih menu (1/2): ")
+    clear_screen()
+    
+    if choice == '1':
+        if login():
+            clear_screen()
+            main()
         
         
     elif choice == '2':
         if sign_up():
             clear_screen()
             laptop_spec()
-    elif choice == '3':
-        clear_screen()
-        print("=====T E R I M A  K A S I H====")
-        print("Telah menggunakan program kami!")
         
     else:
         print("Pilihan tidak valid!")
+
 
 if __name__ == '__main__':
     main()
