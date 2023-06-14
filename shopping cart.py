@@ -47,7 +47,7 @@ def muat_keranjang():
 keranjang = muat_keranjang()
 
 while True:
-    print("=== Toko Laptop ===")
+    print("============ Toko Laptop ==============")
     print("1. Tampilkan Shopping Cart")
     print("2. Tambahkan Produk ke Shopping Cart")
     print("3. Keluar")
