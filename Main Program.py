@@ -280,48 +280,6 @@ def laptop_price_range():
         print("Pilihan yang Anda masukkan belum benar, coba lagi.")
         laptop_price_range()
 
-def laptop_brand():
-    global selected_brand
-    clear_screen()
-    print("Tampilkan spesifikasi laptop berdasarkan merk? ")
-    print("1. ya")
-    print("2. tidak")
-    chose = input("masukkan pilihan (1/2): ")
-    if chose == '1':
-        print("Pilih merk laptop (1/2/3/4/5/6):")
-        print("1. Asus")
-        print("2. Acer")
-        print("3. Lenovo")
-        print("4. HP")
-        print("5. Dell")
-        choice = input("Masukkan pilihan (1/2/3/4/5/6): ")
-        if choice == '1':
-            selected_brand = "Asus"
-            laptop_recommendation()
-        elif choice == '2':
-            selected_brand = "Acer"
-            laptop_recommendation()
-        elif choice == '3':
-            selected_brand = "Lenovo"
-            laptop_recommendation()
-        elif choice == '4':
-            selected_brand = "HP"
-            laptop_recommendation()
-        elif choice == '5':
-            selected_brand = "Dell"
-            laptop_recommendation()
-        else:
-            clear_screen()
-            print("Pilihan yang Anda masukkan belum benar, coba lagi.")
-            laptop_brand()
-    elif chose == '2':
-        laptop_recommendation()
-    else:
-        clear_screen()
-        print("Pilihan yang Anda masukkan belum benar, coba lagi.")
-        laptop_brand()
-
-
 def laptop_recommendation():
     data = pd.read_csv('D:/Hola Comp/Hola-Comp/data_laptop.csv')
 
@@ -343,9 +301,81 @@ def laptop_recommendation():
     if harga :
         filtered_data = filtered_data[filtered_data['harga'] == harga]
     print(filtered_data)
+
+
+def laptop_brand():
+    global selected_brand
+    clear_screen()
+    print("Tampilkan spesifikasi laptop berdasarkan merk? ")
+    print("1. ya")
+    print("2. tidak")
+    chose = input("masukkan pilihan (1/2): ")
+    if chose == '1':
+        print("Pilih merk laptop (1/2/3/4/5/6):")
+        print("1. Asus")
+        print("2. Acer")
+        print("3. Lenovo")
+        print("4. HP")
+        print("5. Dell")
+        choice = input("Masukkan pilihan (1/2/3/4/5/6): ")
+        if choice == '1':
+            selected_brand = "Asus"
+            laptop_recommendation()
+            accessories()
+        elif choice == '2':
+            selected_brand = "Acer"
+            laptop_recommendation()
+            accessories()
+        elif choice == '3':
+            selected_brand = "Lenovo"
+            laptop_recommendation()
+            accessories()
+        elif choice == '4':
+            selected_brand = "HP"
+            laptop_recommendation()           
+            accessories()
+        elif choice == '5':
+            selected_brand = "Dell"
+            laptop_recommendation()
+            accessories()
+        else:
+            clear_screen()
+            print("Pilihan yang Anda masukkan belum benar, coba lagi.")
+            laptop_brand()
+    elif chose == '2':
+        laptop_recommendation()
+        accessories()
+    else:
+        clear_screen()
+        print("Pilihan yang Anda masukkan belum benar, coba lagi.")
+        laptop_brand()
+
+
+#def laptop_recommendation():
+    data = pd.read_csv('D:/Hola Comp/Hola-Comp/data_laptop.csv')
+
+    merek = input("Masukkan merek laptop (atau tekan Enter untuk melewati): ")
+    processor = input("Masukkan processor (atau tekan Enter untuk melewati): ")
+    ram = input("Masukkan RAM (atau tekan Enter untuk melewati): ")
+    rom = input("Masukkan ROM (atau tekan Enter untuk melewati): ")
+    harga = input("Masukkan Rentang Harga (atau tekan Enter untuk melewati): ")
+
+    filtered_data = data
+    if merek:
+        filtered_data = filtered_data[filtered_data['merk'] == merek]
+    if processor:
+        filtered_data = filtered_data[filtered_data['prosesor'] == processor]
+    if ram :
+        filtered_data = filtered_data[filtered_data['ram'] == ram]
+    if rom :
+        filtered_data = filtered_data[filtered_data['rom'] == processor]
+    if harga :
+        filtered_data = filtered_data[filtered_data['harga'] == harga]
+    print(filtered_data)
+
     
 
-selected_accessories = ""
+#selected_accessories = ""
 def accessories():
     clear_screen()
     print("Tampilkan macam - macam aksesoris? ")
@@ -415,15 +445,14 @@ def main():
     clear_screen()
     
     if choice == '1':
-        if login():
-            clear_screen()
-            main()
+        clear_screen()
+        main()
         
         
     elif choice == '2':
-        if sign_up():
-            clear_screen()
-            laptop_spec()
+        clear_screen()
+        sign_up()
+        laptop_spec()
         
     else:
         print("Pilihan tidak valid!")

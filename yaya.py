@@ -13,7 +13,7 @@ def main_menu(username):
     print("3. Log Out")
     choice = input("Masukkan pilihan (1/2/3): ")
     if choice == '1':
-        laptop_spec()
+        pilih()
     elif choice == '2':
         accessories()
     elif choice == '3':
@@ -295,7 +295,7 @@ def laptop_recommendation2():
 
     if not condition.empty:
         print("Berikut adalah rekomendasi laptop:")
-        print("="*100)
+        
         print(condition[['merk', 'tipe', 'ram', 'rom', 'prosesor']])
     else:
         print("Maaf, tidak ditemukan laptop yang sesuai dengan kriteria Anda.")
@@ -418,11 +418,11 @@ def accessories():
             menu_accessories()
         elif choice == '2':
             selected_accessories = "keyboard"
-            #clear_screen()
-            #menu_accessories()
             print("="*100)
             key = pd.read_csv('D:/Hola Comp/Hola-Comp/key.csv')
-            print("berikut nihhh" , key)
+            print("Berikut Rekomendasi Keyboard:")
+            print(key)
+            input("Tekan ENTER untuk melajutkan")
         elif choice == '3':
             selected_accessories = "headset"
             #clear_screen()
@@ -475,8 +475,9 @@ def welcome_message():
 
 def pilih():
     clear_screen()
-    print("anda ingin membeli laptop atas rekomendasi kami atau ngisi manual?")
-    milih = input("Menu: \n1. manual \n2. ngikut")
+    print("Anda ingin membeli laptop atas rekomendasi kami atau ngisi manual?")
+    print("Menu: \n1. Filtering \n2. Manual")
+    milih = input("Masukkan pilihan (1/2/3): ")
     if milih == '1':
         if laptop_processor():
             clear_screen()
@@ -497,6 +498,7 @@ def login():
         for row in reader:
             if row[0] == username and row[1] == password:
                 print("Login berhasil!")
+                main_menu(username)
                 pilih()
                 #main_menu(username)
                 return True
@@ -514,6 +516,12 @@ def sign_up():
     username = input("Masukkan username baru: ")
     password = input("Masukkan password baru: ")
 
+    with open('akun.csv', 'a', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow([username, password])
+        print("Akun berhasil dibuat!")
+        return True
+
     with open('akun.csv', 'r') as file:
         reader = csv.reader(file)
         for row in reader:
@@ -523,11 +531,7 @@ def sign_up():
                     clear_screen()
                     main()
                 return False
-    with open('akun.csv', 'a', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerow([username, password])
-        print("Akun berhasil dibuat!")
-        return True 
+
 username = ""
 #sign_up()
 
