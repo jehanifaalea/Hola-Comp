@@ -19,7 +19,7 @@ def main_menu(username):
     elif choice == '3':
         clear_screen()
         print("Terima kasih telah menggunakan program kami!")
-        login()
+        main()
     else:
         clear_screen()
         print("Pilihan yang Anda masukkan belum benar, coba lagi.")
@@ -34,8 +34,8 @@ def laptop_spec():
     laptop_processor()
 
 selected_processor = ""
-selected_ram = 0
-selected_rom = 0
+selected_ram = ""
+selected_rom = ""
 max_price = 0
 min_price = 0
 selected_brand = ""
@@ -112,6 +112,7 @@ def laptop_processor():
     elif chose == '2':
         laptop_ram()
     else:
+        clear_screen()
         print("Pilihan yang Anda masukkan belum benar, coba lagi.")
         laptop_processor()
 
@@ -131,19 +132,19 @@ def laptop_ram():
         print("4. 16 GB")
         choice = input("Masukkan pilihan (1/2/3/4): ")
         if choice == '1':
-            selected_ram = "4 GB"
+            selected_ram = 4
             clear_screen()
             laptop_rom()
         elif choice == '2':
-            selected_ram = "8 GB"
+            selected_ram = 8
             clear_screen()
             laptop_rom()
         elif choice == '3':
-            selected_ram = "12 GB"
+            selected_ram = 12
             clear_screen()
             laptop_rom()
         elif choice == '4':
-            selected_ram = "16 GB"
+            selected_ram = 16
             clear_screen()
             laptop_rom()
         else:
@@ -172,15 +173,15 @@ def laptop_rom():
         print("3. 1024 GB")
         choice = input("Masukkan pilihan (1/2/3): ")
         if choice == '1':
-            selected_rom = "256 GB"
+            selected_rom = 256
             clear_screen()
             laptop_price_range()
         elif choice == '2':
-            selected_rom = "512 GB"
+            selected_rom = 512
             clear_screen()
             laptop_price_range()
         elif choice == '3':
-            selected_rom = "1024 GB"
+            selected_rom = 1024
             clear_screen()
             laptop_price_range()
         else:
@@ -256,14 +257,14 @@ def laptop_recommendation():
     if processor:
         filtered_data = filtered_data[filtered_data['prosesor'] == processor]
     if ram :
-        filtered_data = filtered_data[filtered_data['ram'] == ram]
+        filtered_data = filtered_data[filtered_data['ram'] == int(ram)]
     if rom :
-        filtered_data = filtered_data[filtered_data['rom'] == processor]
+        filtered_data = filtered_data[filtered_data['rom'] == int(rom)]
     if harga :
-        filtered_data = filtered_data[filtered_data['harga'] == harga]
+        filtered_data = filtered_data[filtered_data['harga'] == int(harga)]
     print(filtered_data)
     print("="*100)
-    input("Tekan ENTER untuk melajutkan")
+    input("Tekan ENTER untuk melanjutkan")
     accessories()
 
 def laptop_recommendation2():
@@ -274,29 +275,30 @@ def laptop_recommendation2():
 
     if selected_processor != "":
         condition = condition[condition['prosesor'] == selected_processor]
-        input("Tekan ENTER untuk melajutkan")
+        
 
     if selected_brand != "":
         condition = condition[condition['merk'] == selected_brand]
-        input("Tekan ENTER untuk melajutkan")
+        #input("Tekan ENTER untuk melajutkan")
 
-    if selected_ram != 0:
-        condition = condition[condition['ram'] == selected_ram]
-        input("Tekan ENTER untuk melajutkan")
+    if selected_ram != "":
+        condition = condition[condition['ram'] == int(selected_ram)]
+        #input("Tekan ENTER untuk melajutkan")
 
-    if selected_rom != 0:
-        condition = condition[condition['rom'] == selected_rom]
-        input("Tekan ENTER untuk melajutkan")
+    if selected_rom != "":
+        condition = condition[condition['rom'] == int(selected_rom)]
+        #input("Tekan ENTER untuk melajutkan")
 
     if min_price > 0:
-        condition = condition[condition['harga'] <= max_price]
-        condition = condition[condition['harga'] >= min_price]
-        input("Tekan ENTER untuk melajutkan")
+        condition = condition[condition['harga'] <= int(max_price)]
+        condition = condition[condition['harga'] >= int(min_price)]
+        #input("Tekan ENTER untuk melajutkan")
 
     if not condition.empty:
+        clear_screen()
         print("Berikut adalah rekomendasi laptop:")
         
-        print(condition[['merk', 'tipe', 'ram', 'rom', 'prosesor']])
+        print(condition[['merk', 'tipe', 'ram', 'rom', 'prosesor','harga']])
     else:
         print("Maaf, tidak ditemukan laptop yang sesuai dengan kriteria Anda.")
 
@@ -385,11 +387,11 @@ def menu_accessories():
         print("Berikut adalah rekomendasi laptop:")
         print(conditions)
         print("="*100)
-        input("Tekan ENTER untuk melajutkan")
+        input("Tekan ENTER untuk melanjutkan")
         #SAMA
     else:
         print("Maaf, tidak ditemukan laptop yang sesuai dengan kriteria Anda. \Lakuan pemilihan laptop ulang")
-        input("Tekan ENTER untuk melajutkan")
+        input("Tekan ENTER untuk melanjutkan")
         pilih()
     
 
@@ -419,10 +421,10 @@ def accessories():
         elif choice == '2':
             selected_accessories = "keyboard"
             print("="*100)
-            key = pd.read_csv('D:/Hola Comp/Hola-Comp/key.csv')
+            key = pd.read_csv('D:/Hola Comp/Hola-Comp/Keyboard.csv')
             print("Berikut Rekomendasi Keyboard:")
             print(key)
-            input("Tekan ENTER untuk melajutkan")
+            input("Tekan ENTER untuk melanjutkan")
         elif choice == '3':
             selected_accessories = "headset"
             #clear_screen()
