@@ -9,6 +9,7 @@ Dell,G5 15,Intel Core i7,8,512,12000000
 Dell,G5 15 5505,Intel Core i7,16,512,21000000
 Lenovo,Legion 7,AMD Ryzen 7,12,1024,18000000
 HP,Spectre x360,Intel Core i7,8,512,17000000
+HP,Spectre x360,Intel Core i7,16,1024,32000000
 Asus,TUF Gaming A15 FA507,AMD Ryzen 7,8,512,18000000
 HP,Spectre x360 15,Intel Core i7,16,1024,3000000
 Acer,Predator Helios 16,Intel Core i7,16,1024,28000000
@@ -54,4 +55,7 @@ Asus,TUF Gaming FX505DT,AMD Ryzen 5,8,512,10500000
 Lenovo,Legion Y540,Intel Core i5,8,512,12000000
 Asus,ROG Zephyrus G14,AMD Ryzen 7,16,512,13000000
 Lenovo,Thinkpad X1 Carbon,Intel Core i7,16,512,16000000
-Dell,XPS 15,Intel Core i7,16,1024,240000000
+Dell,XPS 15,Intel Core i7,16,1024,24000000
+Asus,Zenbook Pro Duo,Intel Core i7,16,1024,26000000
+Asus,ROG Zephyrus S17,Intel Core i7,16,1024,24000000
+Asus,ROG Zephyrus G15,AMD Ryzen 9,16,1024,24000000

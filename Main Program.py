@@ -16,40 +16,55 @@ def login():
         for row in reader:
             if row[0] == username and row[1] == password:
                 print("Login berhasil!")
+                main_menu(username)
                 return True
 
     print("Username atau password salah. ")
     if login():
         clear_screen()
+        welcome_message()
         main_menu()
     return False
-    
-    
 
 def sign_up():
     username = input("Masukkan username baru: ")
     password = input("Masukkan password baru: ")
 
+    with open('akun.csv', 'r') as file:
+        reader = csv.reader(file)
+        for row in reader:
+            if row[0] == username:
+                print("Username sudah terdaftar.")
+                if sign_up():
+                    clear_screen()
+                    main()
+                return False
     with open('akun.csv', 'a', newline='') as file:
         writer = csv.writer(file)
         writer.writerow([username, password])
+        print("Akun berhasil dibuat!")
+        return True 
 
-    print("Akun berhasil dibuat!")
-    return True
+username = ""
 
-def main_menu():
+def main_menu(username):
     clear_screen()
+    print("===================== WELCOME =====================")
+    print("             Selamat datang",username)
+    print("===================================================")
     print("Main Menu:")
     print("1. Laptop")
     print("2. Aksesoris Laptop")
-    print("3. Keluar")
+    print("3. Log Out")
     choice = input("Masukkan pilihan (1/2/3): ")
     if choice == '1':
         laptop_spec()
     elif choice == '2':
         accessories()
     elif choice == '3':
+        clear_screen()
         print("Terima kasih telah menggunakan program kami!")
+        login()
     else:
         print("Pilihan yang Anda masukkan belum benar, coba lagi.")
         input("\nTekan Enter untuk kembali ke menu...")
@@ -86,7 +101,7 @@ def laptop_processor():
         if choice == '1':
             clear_screen()
             selected_processor = "Intel"
-            input_prosesor = input("Masukkan prosesor Intel yang diinginkan: \n1. Intel i3, \n2. Intel i5, \n3. Intel core i3, \n4. Intel core i5, \n5. Intel core i7, \n6. Intel core i9, \n7. Intel UHD Graphics 600")
+            input_prosesor = print("Masukkan prosesor Intel yang diinginkan: \n1. Intel i3 \n2. Intel i5 \n3. Intel core i3 \n4. Intel core i5 \n5. Intel core i7 \n6. Intel core i9 \n7. Intel UHD Graphics 600")
             prosesor_intel = input("Masukkan pilihan (1/2/3/4/5/6/7): ")
             if prosesor_intel == '1':
                 selected_processor = 'Intel i3'
@@ -119,7 +134,7 @@ def laptop_processor():
         elif choice == '2':
             clear_screen()
             selected_processor = "Ryzen"
-            input_prosesor = input("Masukkan prosesor Ryzen yang diinginkan: \n1. AMD Ryzen 5600H, \n2. AMD Ryzen 5, \n3. AMD Ryzen 7")
+            input_prosesor = print("Masukkan prosesor Ryzen yang diinginkan: \n1. AMD Ryzen 5600H \n2. AMD Ryzen 5 \n3. AMD Ryzen 7")
             prosesor_ryzen = input("Masukkan pilihan(1/2): ")
             if prosesor_ryzen == '1':
                 selected_processor = 'AMD Ryzen 5600H'
@@ -265,6 +280,29 @@ def laptop_price_range():
         print("Pilihan yang Anda masukkan belum benar, coba lagi.")
         laptop_price_range()
 
+def laptop_recommendation():
+    data = pd.read_csv('D:/Hola Comp/Hola-Comp/data_laptop.csv')
+
+    merek = input("Masukkan merek laptop (atau tekan Enter untuk melewati): ")
+    processor = input("Masukkan processor (atau tekan Enter untuk melewati): ")
+    ram = input("Masukkan RAM (atau tekan Enter untuk melewati): ")
+    rom = input("Masukkan ROM (atau tekan Enter untuk melewati): ")
+    harga = input("Masukkan Rentang Harga (atau tekan Enter untuk melewati): ")
+
+    filtered_data = data
+    if merek:
+        filtered_data = filtered_data[filtered_data['merk'] == merek]
+    if processor:
+        filtered_data = filtered_data[filtered_data['prosesor'] == processor]
+    if ram :
+        filtered_data = filtered_data[filtered_data['ram'] == ram]
+    if rom :
+        filtered_data = filtered_data[filtered_data['rom'] == processor]
+    if harga :
+        filtered_data = filtered_data[filtered_data['harga'] == harga]
+    print(filtered_data)
+
+
 def laptop_brand():
     global selected_brand
     clear_screen()
@@ -282,48 +320,62 @@ def laptop_brand():
         choice = input("Masukkan pilihan (1/2/3/4/5/6): ")
         if choice == '1':
             selected_brand = "Asus"
-            clear_screen()
             laptop_recommendation()
+            accessories()
         elif choice == '2':
             selected_brand = "Acer"
-            clear_screen()
             laptop_recommendation()
+            accessories()
         elif choice == '3':
             selected_brand = "Lenovo"
-            clear_screen()
             laptop_recommendation()
+            accessories()
         elif choice == '4':
             selected_brand = "HP"
-            clear_screen()
-            laptop_recommendation()
+            laptop_recommendation()           
+            accessories()
         elif choice == '5':
             selected_brand = "Dell"
-            clear_screen()
             laptop_recommendation()
+            accessories()
         else:
             clear_screen()
             print("Pilihan yang Anda masukkan belum benar, coba lagi.")
             laptop_brand()
     elif chose == '2':
         laptop_recommendation()
+        accessories()
     else:
         clear_screen()
         print("Pilihan yang Anda masukkan belum benar, coba lagi.")
         laptop_brand()
 
-def laptop_recommendation():
-    data = pd.read_csv('C:/Users/USER/Documents/baruu/Hola-Comp/data_laptop.csv')
 
+#def laptop_recommendation():
+    data = pd.read_csv('D:/Hola Comp/Hola-Comp/data_laptop.csv')
+
+    merek = input("Masukkan merek laptop (atau tekan Enter untuk melewati): ")
+    processor = input("Masukkan processor (atau tekan Enter untuk melewati): ")
+    ram = input("Masukkan RAM (atau tekan Enter untuk melewati): ")
+    rom = input("Masukkan ROM (atau tekan Enter untuk melewati): ")
+    harga = input("Masukkan Rentang Harga (atau tekan Enter untuk melewati): ")
 
     filtered_data = data
-    if selected_brand:
-        filtered_data = filtered_data[filtered_data['merk'] == selected_brand]
-    if selected_processor:
-        filtered_data = filtered_data[filtered_data['prosesor'] == selected_processor]
-
+    if merek:
+        filtered_data = filtered_data[filtered_data['merk'] == merek]
+    if processor:
+        filtered_data = filtered_data[filtered_data['prosesor'] == processor]
+    if ram :
+        filtered_data = filtered_data[filtered_data['ram'] == ram]
+    if rom :
+        filtered_data = filtered_data[filtered_data['rom'] == processor]
+    if harga :
+        filtered_data = filtered_data[filtered_data['harga'] == harga]
     print(filtered_data)
 
-selected_accessories = ""
+    
+
+#selected_accessories = ""
 def accessories():
     clear_screen()
     print("Tampilkan macam - macam aksesoris? ")
@@ -365,7 +417,7 @@ def accessories():
         laptop_price_range()
     
 def menu_accessories():
-    aksesoris = pd.read_csv('C:/Users/USER/Documents/baruu/Hola-Comp/data_aksesoris.csv')
+    aksesoris = pd.read_csv('D:/Hola Comp/Hola-Comp/data_aksesoris.csv')
     conditions = aksesoris
 
     if selected_accessories != "":
@@ -386,24 +438,25 @@ def clear_screen():
     import os
     os.system('cls' if os.name == 'nt' else 'clear')
 
-welcome_message()
 
-choice = input("Menu: \n1. Login \n2. Sign Up \n3. Exit \nPilih menu (1/2/3): ")
-clear_screen()
-
-if choice == '1':
-    if login():
-        clear_screen()
-        main_menu()
-        
-        
-elif choice == '2':
-    if sign_up():
-        clear_screen()
-        laptop_spec()
-elif choice == '3':
+def main():
+    welcome_message()
+    choice = input("Menu: \n1. Login \n2. Sign Up \nPilih menu (1/2): ")
     clear_screen()
-    print("Terima kasih telah menggunakan program kami!")
+    
+    if choice == '1':
+        clear_screen()
+        main()
         
-else:
-    print("Pilihan tidak valid!")
+        
+    elif choice == '2':
+        clear_screen()
+        sign_up()
+        laptop_spec()
+        
+    else:
+        print("Pilihan tidak valid!")
+
+
+if __name__ == '__main__':
+    main()
