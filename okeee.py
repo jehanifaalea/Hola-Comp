@@ -27,7 +27,6 @@ def main_menu(username):
         laptop_spec()
         
 
-
 def laptop_spec():
     clear_screen()
     print("Tampilkan Spesifikasi Laptop yang tersedia:")
@@ -116,7 +115,6 @@ def laptop_processor():
         print("Pilihan yang Anda masukkan belum benar, coba lagi.")
         laptop_processor()
 
-
 def laptop_ram():
     clear_screen()
     global selected_ram
@@ -158,7 +156,6 @@ def laptop_ram():
         print("Pilihan yang Anda masukkan belum benar, coba lagi.")
         laptop_ram()
 
-
 def laptop_rom():
     clear_screen()
     global selected_rom  
@@ -194,8 +191,6 @@ def laptop_rom():
         print("Pilihan yang Anda masukkan belum benar, coba lagi.")
         laptop_rom()
  
-
-
 def laptop_price_range():
     global selected_price_range
     clear_screen()
@@ -249,8 +244,6 @@ def laptop_recommendation():
     print("")
 
     filtered_data = data
-    
-    #TABEL
 
     if merek:
         filtered_data = filtered_data[filtered_data['merk'] == merek]
@@ -264,7 +257,6 @@ def laptop_recommendation():
         filtered_data = filtered_data[filtered_data['harga'] == harga]
     print(filtered_data)
     print("="*100)
-    nomor_laptop()
 
 
 def laptop_recommendation2():
@@ -290,8 +282,8 @@ def laptop_recommendation2():
         #input("Tekan ENTER untuk melajutkan")
 
     if min_price > 0:
-        condition = condition[condition['harga'] <= max_price]
-        condition = condition[condition['harga'] >= min_price]
+        condition = condition[condition['harga'] <= int(max_price)]
+        condition = condition[condition['harga'] >= int(min_price)]
         input("Tekan ENTER untuk melanjutkan")
 
     if not condition.empty:
@@ -366,8 +358,9 @@ def laptop_brand():
 
 #TAMBAH SHOPPING CART    
 def menu_accessories():
-    clear_screen()
+    global aksesoris
     aksesoris = pd.read_csv('D:/Hola Comp/Hola-Comp/data_aksesoris.csv')
+    aksesoris = pd.read_csv('D:/ProgramaKomputer/I0322068_Lodero/HOLAAA/Hola-Comp/Keyboard.csv')
     print("="*100)
     
     conditions = aksesoris
@@ -388,7 +381,6 @@ def menu_accessories():
         print("Berikut adalah rekomendasi laptop:")
         print(conditions)
         print("="*100)
-        beli_aksesoris()
         #SAMA
     else:
         print("Maaf, tidak ditemukan laptop yang sesuai dengan kriteria Anda. \Lakuan pemilihan laptop ulang")
@@ -413,41 +405,6 @@ def exit():
         laptop_spec()
 
 nolap = ""
-def nomor_laptop():
-    global nolap
-    print('Tekan ENTER untuk melanjutkan')
-    chose = input("")
-    if chose == '':
-        nomor_laptop = input("Masukkan nomor laptop yang akan dibeli: ")
-        nomor_laptop = int(nomor_laptop)
-        if 1 <= nomor_laptop <= len(nolap):
-             laptop = nolap[nomor_laptop - 1]
-             print("Laptop ditemukan.")
-             harga_laptop = int(laptop['Harga'])
-             harga_aksesoris = beli_aksesoris()
-             metode_pengiriman(harga_laptop, harga_aksesoris, laptop)
-             accessories()
-        else:
-             print("Nomor laptop tidak valid.")
-
-def beli_aksesoris():
-    print("\n--- Beli Aksesoris ---")
-    menu_accessories(aksesoris)
-    pilihan_aksesoris = input("Masukkan nomor aksesoris yang akan dibeli (0 jika tidak membeli): ")
-    if pilihan_aksesoris == '0':
-        return 0
-    elif pilihan_aksesoris.isdigit():
-        pilihan_aksesoris = int(pilihan_aksesoris)
-        if 1 <= pilihan_aksesoris <= len(aksesoris):
-            aksesoris = aksesoris[pilihan_aksesoris - 1]
-            harga_aksesoris = int(aksesoris['Harga'])
-            print("Aksesoris ditemukan.")
-            return harga_aksesoris
-        else:
-            print("Nomor aksesoris tidak valid.")
-    else:
-        print("Nomor aksesoris tidak valid.")
-    return 0
 
 def metode_pengiriman(harga_laptop, harga_aksesoris, nama_pelanggan, laptop, alamat, no_hp):
     print("\n--- Metode Pengiriman ---")
@@ -467,12 +424,19 @@ def metode_pengiriman(harga_laptop, harga_aksesoris, nama_pelanggan, laptop, ala
     else:
         print("Pilihan tidak valid.")
 
-def metode_pembayaran(nama_pelanggan, laptop, harga_laptop, harga_aksesoris, informasi_pengiriman, biaya_pengiriman):
+def metode_pembayaran(nama_pelanggan, laptop, harga_laptop, harga_aksesoris, alamat, biaya_pengiriman):
+    #global laptop
+    #global harga_laptop
+    #global harga_aksesoris
+    #global informasi_pengiriman
+    #global biaya_pengiriman
+    nama_pelanggan = input("masukkan nama anda : ")
+    alamat = input("masukkan alamat anda : ")
+
     print("\n--- Metode Pembayaran ---")
     print("Pilihan:")
     print("1. Transfer Bank/E-Wallet")
     print("2. Cash On Delivery (COD)")
-
     pilihan_pembayaran = input("Masukkan pilihan (1/2): ")
     if pilihan_pembayaran == '1':
         print("Silakan transfer ke rekening bank berikut:")
@@ -481,9 +445,9 @@ def metode_pembayaran(nama_pelanggan, laptop, harga_laptop, harga_aksesoris, inf
         print("QR code: XXXX")
         print("Jumlah yang harus ditransfer: Rp{:,}".format(harga_laptop + harga_aksesoris + biaya_pengiriman))
         print("Konfirmasi pembayaran dengan mengirimkan bukti transfer.")
-        tampilkan_struk(nama_pelanggan, laptop, harga_laptop, harga_aksesoris, informasi_pengiriman, biaya_pengiriman)
+        tampilkan_struk(nama_pelanggan, laptop, harga_laptop, harga_aksesoris, alamat, biaya_pengiriman)
     elif pilihan_pembayaran == '2':
-        tampilkan_struk(nama_pelanggan, laptop, harga_laptop, harga_aksesoris, informasi_pengiriman, biaya_pengiriman)
+        tampilkan_struk(nama_pelanggan, laptop, harga_laptop, harga_aksesoris, alamat, biaya_pengiriman)
     else:
         print("Pilihan tidak valid.")
 
@@ -505,6 +469,7 @@ def tampilkan_struk(nama_pelanggan, laptop, harga_laptop, harga_aksesoris, infor
     print("Total Harga: Rp{:,}".format(total_harga))
     print("==================================")
     print("Terima kasih telah berbelanja di Hola Comp🙏")
+
 
 def clear_screen():
     import os
@@ -585,6 +550,7 @@ def tampilkan_keranjang(keranjang):
 
 # Fungsi untuk menambahkan item ke shopping cart
 def tambahkan_ke_keranjang(keranjang, nama, tipe, harga):
+    keranjang = []
     item = {
         'nama': nama,
         'tipe': tipe,
@@ -593,24 +559,30 @@ def tambahkan_ke_keranjang(keranjang, nama, tipe, harga):
     keranjang.append(item)
 
     # Menyimpan data ke file JSON
-    with open('keranjang.json', 'w') as file:
-        json.dump(keranjang, file)
+    #with open('keranjang.json', 'w') as file:
+    keranjang = open("keranjang.json","w")
+    keranjang.write(item)
+    keranjang.close()
+    #json.dump(keranjang, file)
 
     print(f"{nama} telah ditambahkan ke keranjang.")
 
 # Fungsi untuk memuat data dari file JSON
 def muat_keranjang():
     try:
-        with open('keranjang.json', 'r') as file:
+        with open('keranjang.json', 'a') as file:
             return json.load(file)
     except FileNotFoundError:
         return []
 
 # Main program
-keranjang = muat_keranjang()
+keranjang = ""
 
 def shopping():
+    clear_screen()
     laptop_recommendation2()
+    menu_accessories()
+    laptop_recommendation()
     print("===================================== Toko Halo Comp ==================================")
     print("1. Tampilkan Shopping Cart")
     print("2. Tambahkan Produk ke Shopping Cart")
@@ -621,7 +593,7 @@ def shopping():
             tampilkan_keranjang(keranjang)
             input("Tekan ENTER jika ingin kembali ke Shopping Chart")
             clear_screen()
-            shopping()
+            metode_pengiriman()
         elif pilihan == '2':
             nama = input("Masukkan nama produk: ")
             tipe = input("Masukkan tipe produk: ")
@@ -706,24 +678,27 @@ def sign_up():
     welcome_message()
     username = input("Masukkan username baru: ")
     password = input("Masukkan password baru: ")
-
-    with open('akun.csv', 'a', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerow([username, password])
-        print("Akun berhasil dibuat!")
-        pilih()
-        return True
+    while not (len(password)>=8 and password.isalnum()):
+        print("Masukkan password minimal 8 karakter dengan kombinasi angka dan huruf")
+        password = input("Masukkan kembali Password : ")
 
     with open('akun.csv', 'r') as file:
         reader = csv.reader(file)
         for row in reader:
             if row[0] == username:
                 print("Username sudah terdaftar.")
+                input("Tekan ENTER")
                 if sign_up():
                     clear_screen()
                     main()
                 return False
-
+    
+    with open('akun.csv', 'a', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow([username, password])
+        print("Akun berhasil dibuat!")
+        pilih()
+        return True
 
 
 username = ""
@@ -733,5 +708,3 @@ username = ""
 
 
 main()
-#if __name__ == '__main__':
-#    main()
