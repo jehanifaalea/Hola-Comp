@@ -264,7 +264,6 @@ def laptop_recommendation():
         filtered_data = filtered_data[filtered_data['harga'] == harga]
     print(filtered_data)
     print("="*100)
-    input("TEKANNN ENTERRR ANJINGGGG")
     nomor_laptop()
 
 
@@ -377,22 +376,19 @@ def menu_accessories():
         conditions = conditions[conditions['nama'] == selected_accessories]
         print("="*100)
         input("Tekan ENTER untuk melanjutkan")
-        stop()
     elif selected_accessories != "":
         conditions = conditions[['merek'] == selected_accessories]
         print("="*100)
         input("Tekan ENTER untuk melanjutkan")
-        stop()
     elif selected_accessories != "":
         conditions = conditions[['harga'] == selected_accessories]
         print("="*100)
         input("Tekan ENTER untuk melanjutkan")
-        stop()
     elif not conditions.empty:
         print("Berikut adalah rekomendasi laptop:")
         print(conditions)
         print("="*100)
-        stop()
+        beli_aksesoris()
         #SAMA
     else:
         print("Maaf, tidak ditemukan laptop yang sesuai dengan kriteria Anda. \Lakuan pemilihan laptop ulang")
@@ -401,13 +397,13 @@ def menu_accessories():
 
 def exit():
     clear_screen()
-    print("===================== T H A N K Y O U =====================")
+    print("===================== T H A N K Y O U",(username), "=====================")
     print("Main Menu:")
     print("1. Belanja lagi")
     print("2. Log Out")
     choice = input("Masukkan pilihan (1/2): ")
     if choice == '1':
-        main_menu()
+        main_menu(username)
     elif choice == '2':
         main()
     else:
@@ -419,8 +415,9 @@ def exit():
 nolap = ""
 def nomor_laptop():
     global nolap
+    print('Tekan ENTER untuk melanjutkan')
     chose = input("")
-    if chose == 'Enter':
+    if chose == '':
         nomor_laptop = input("Masukkan nomor laptop yang akan dibeli: ")
         nomor_laptop = int(nomor_laptop)
         if 1 <= nomor_laptop <= len(nolap):
@@ -429,12 +426,13 @@ def nomor_laptop():
              harga_laptop = int(laptop['Harga'])
              harga_aksesoris = beli_aksesoris()
              metode_pengiriman(harga_laptop, harga_aksesoris, laptop)
+             accessories()
         else:
              print("Nomor laptop tidak valid.")
 
 def beli_aksesoris():
     print("\n--- Beli Aksesoris ---")
-    tampilkan_daftar_aksesoris(aksesoris)
+    menu_accessories(aksesoris)
     pilihan_aksesoris = input("Masukkan nomor aksesoris yang akan dibeli (0 jika tidak membeli): ")
     if pilihan_aksesoris == '0':
         return 0
@@ -450,13 +448,6 @@ def beli_aksesoris():
     else:
         print("Nomor aksesoris tidak valid.")
     return 0
-
-def tampilkan_daftar_aksesoris(aksesoris):
-    print("Daftar Aksesoris:")
-    print("No. | Merek\t| Jenis Aksesoris\t| Harga\t|")
-    print("----------------------------------------------")
-    for i, aksesoris in enumerate(aksesoris):
-        print(f"{i+1}.  | {aksesoris['Merek']}\t| {aksesoris['Aksesoris']}\t\t| {aksesoris['Harga']}\t|")
 
 def metode_pengiriman(harga_laptop, harga_aksesoris, nama_pelanggan, laptop, alamat, no_hp):
     print("\n--- Metode Pengiriman ---")
@@ -620,7 +611,7 @@ keranjang = muat_keranjang()
 
 def shopping():
     laptop_recommendation2()
-    print("========================================== Toko Halo Comp ===================================")
+    print("===================================== Toko Halo Comp ==================================")
     print("1. Tampilkan Shopping Cart")
     print("2. Tambahkan Produk ke Shopping Cart")
     print("3. Keluar")
@@ -733,8 +724,6 @@ def sign_up():
                     main()
                 return False
 
-def stop():
-    input("Tekan enter")
 
 
 username = ""
