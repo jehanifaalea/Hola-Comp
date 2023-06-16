@@ -31,7 +31,7 @@ HP,14s,AMD Ryzen 7,8,512,10000000
 Dell,Inspiron 15 5509,Intel Core i7,16,512,13000000
 HP,Omen X 2S,Intel Core i9,16,1024,23000000
 Acer,Predator Triton 500,Intel Core i7,16,1024,25000000
-Asus,VivoBook 14,Intel Core i5,8,512. 6000000
+Asus,VivoBook 14,Intel Core i5,8,512,6000000
 Lenovo,IdeaPad Slim 3,AMD Ryzen 5,8,256,6500000
 Acer,Swift 3,Intel Core i5,8,512,7000000
 Hp,Pavilion x360,Intel Core i3,8,256,7500000
@@ -46,7 +46,7 @@ Lenovo,Thinkpad E14,AMD Ryzen 7,16,512,11800000
 Hp,Envy x360,AMD Ryzen 7,16,512,14000000
 Dell,XPS 13,Intel Core i7,16,512,15000000
 Dell,Inspiron 14 3493,Intel Core i5,8,1024,8500000
-Lenovo,Ideapad S145,Intel Core i3 4,1024,6500000
+Lenovo,Ideapad S145,Intel Core i3,4,1024,6500000
 Lenovo,IdeaPad Slim 5i,Intel Core i7,16,512,13000000
 Dell,Inspiron 14 5406,Intel Core i7,16,512,13600000
 Hp,Envy x360 13,AMD Ryzen 7,16,512,14000000
