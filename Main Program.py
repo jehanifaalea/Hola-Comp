@@ -375,7 +375,8 @@ def laptop_brand():
 
     
 
-#selected_accessories = ""
+selected_accessories = ""
+
 def accessories():
     clear_screen()
     print("Tampilkan macam - macam aksesoris? ")
