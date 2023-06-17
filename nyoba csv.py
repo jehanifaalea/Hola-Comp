@@ -704,25 +704,23 @@ def sign_up():
         print("Masukkan password minimal 8 karakter dengan kombinasi angka dan huruf")
         password = input("Masukkan kembali Password : ")
 
+    with open('akun.csv', 'a', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow([username, password])
+        print("Akun berhasil dibuat!")
+        return True 
+
+
     with open('akun.csv', 'r') as file:
         reader = csv.reader(file)
         for row in reader:
             if row[0] == username:
                 print("Username sudah terdaftar.")
-                input("Tekan ENTER")
                 if sign_up():
                     clear_screen()
                     main()
                 return False
     
-    with open('akun.csv', 'a', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerow([username, password])
-        print("Akun berhasil dibuat!")
-        main_menu(username)
-        return True
-
-
 username = ""
 
 
