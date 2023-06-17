@@ -99,7 +99,7 @@ def laptop_processor():
             if prosesor_ryzen == '2':
                 selected_processor = 'AMD Ryzen 5'
                 clear_screen()
-                laptop_ram
+                laptop_ram()
             if prosesor_ryzen == '3':
                 selected_processor = 'AMD Ryzen 7'
                 clear_screen()
@@ -357,6 +357,36 @@ def metode_pengiriman():
     else:
         print("Pilihan yang Anda masukkan tidak valid.")
 
+def tampilkan_struk1():
+    total_harga = harga_laptop + harga_aksesoris
+    now = datetime.now() 
+    resume = "\nNama Pelanggan: {}\nMerk Laptop: {}\nTipe Laptop: {}\nAcessories:{}\nHarga Laptop:{}\nHarga Aksesoris:{}\n".format(nama_pelanggan,nama_produk,tipe_laptop,nama_accessories,harga_laptop,harga_aksesoris)
+    file_resume = open("STRUK.txt","w")
+    file_resume.write(resume)
+    file_resume.close()
+    print("=============================================================")
+    print("                         HOLA COMP")
+    print("                      Struk Pembelian")
+    print("=============================================================")
+    print(now)
+    print("Nama Pelanggan:", nama_pelanggan)
+    print("Merk Laptop:", nama_produk)
+    print("Tipe Laptop:", tipe_laptop)
+    print("Acessories:", nama_accessories)
+    print("Tipe Aksesoris:",tipe_accessories)
+    print("Harga Laptop: Rp{:,}".format(harga_laptop))
+    if harga_aksesoris > 0:
+        print("Harga Aksesoris: Rp{:,}".format(harga_aksesoris))
+    print("==================================")
+    print("Total Harga: Rp{:,}".format(total_harga))
+    print("=============================================================")
+    print("Terima kasih telah berbelanja di Hola Comp🙏")
+    print("=============================================================")
+    
+
+    input("TEKAN ENTER UNTUK KELUAR")
+    exit()
+
 
 def metode_pembayaran():
     print("=================== Metode Pembayaran ==============")
@@ -376,7 +406,7 @@ def metode_pembayaran():
         print("Konfirmasi pembayaran dengan mengirimkan bukti transfer.")
         input("Tekan ENTER untuk melanjutkan")
         clear_screen()
-        tampilkan_struk()
+        tampilkan_struk1()
     elif pilihan_pembayaran == '2':
         print("Anda memilih COD")
         tampilkan_struk1()
@@ -521,12 +551,12 @@ def tambahkan_ke_keranjang():
     print(f"{nama_produk,tipe_laptop,nama_accessories,tipe_accessories} telah ditambahkan ke keranjang.")
     clear_screen()
 
-def tampilkan_struk():
-    total_harga = harga_laptop + harga_aksesoris + biaya_pengiriman
+'''def tampilkan_struk1():
+    total_harga = harga_laptop + harga_aksesoris
     now = datetime.now() 
-    file = open("STRUK.txt","w")
-    file.write(f"\nNama Pelanggan: {nama_pelanggan}\nMerk Laptop: {nama_produk}\nTipe Laptop: {tipe_laptop}\nAcessories:{nama_accessories}\nHarga Laptop:{harga_laptop}\nHarga Aksesoris:{harga_aksesoris}\n".format(nama_pelanggan,
-            nama_produk,tipe_laptop,nama_accessories,harga_laptop,harga_aksesoris))
+    resume = "\nNama Pelanggan: {}\nMerk Laptop: {}\nTipe Laptop: {}\nAcessories:{}\nHarga Laptop:{}\nHarga Aksesoris:{}\n".format(nama_pelanggan, nama_produk,tipe_laptop,nama_accessories,harga_laptop,harga_aksesoris)
+    file_resume = open("STRUK.txt", "w")
+    file_resume.write(resume)
     print("=============================================================")
     print("                         HOLA COMP")
     print("                      Struk Pembelian")
@@ -540,17 +570,17 @@ def tampilkan_struk():
     print("Harga Laptop: Rp{:,}".format(harga_laptop))
     if harga_aksesoris > 0:
         print("Harga Aksesoris: Rp{:,}".format(harga_aksesoris))
-    print("Informasi Pengiriman:", alamat)
-    print("Biaya Pengiriman: Rp{:,}".format(biaya_pengiriman))
     print("==================================")
     print("Total Harga: Rp{:,}".format(total_harga))
     print("=============================================================")
     print("Terima kasih telah berbelanja di Hola Comp🙏")
     print("=============================================================")
-    input("TEKAN ENTER UNTUK KELUAR")
-    exit()
+    
 
-def tampilkan_struk1():
+    input("TEKAN ENTER UNTUK KELUAR")
+    exit()'''
+
+'''def tampilkan_struk1():
     total_harga = harga_laptop + harga_aksesoris
     now = datetime.now() 
     file = open("STRUK.txt","w")
@@ -575,7 +605,7 @@ def tampilkan_struk1():
     print("Terima kasih telah berbelanja di Hola Comp🙏")
     print("=============================================================")
     input("TEKAN ENTER UNTUK KELUAR")
-    exit()
+    exit()'''
 
 def tampilkan_keranjang(keranjang):
     print("===============================================")
@@ -723,13 +753,6 @@ def sign_up():
         print("Masukkan password minimal 8 karakter dengan kombinasi angka dan huruf")
         password = input("Masukkan kembali Password : ")
 
-    with open('akun.csv', 'a', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerow([username, password])
-        print("Akun berhasil dibuat!")
-        return True 
-
-
     with open('akun.csv', 'r') as file:
         reader = csv.reader(file)
         for row in reader:
@@ -739,8 +762,12 @@ def sign_up():
                     clear_screen()
                     main()
                 return False
-    
+    with open('akun.csv', 'a', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow([username, password])
+        print("Akun berhasil dibuat!")
+        main_menu()
+        return True 
+
 username = ""
-
-
 main()
