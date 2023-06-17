@@ -278,14 +278,16 @@ def laptop_brand():
         clear_screen()
         print("Pilihan yang Anda masukkan belum benar, coba lagi.")
         laptop_brand()
+
+
    
 def menu_accessories():
     global aksesoris
-    aksesoris = pd.read_csv('data_aksesoris.csv')
     aksesoris = pd.read_csv('Keyboard.csv')
     aksesoris = pd.read_csv('mouse.csv')
     aksesoris = pd.read_csv('tas.csv')
     aksesoris = pd.read_csv('headset.csv')
+    aksesoris = pd.read_csv('data_aksesoris.csv')
     print("="*100)
     
     conditions = aksesoris
@@ -307,7 +309,7 @@ def menu_accessories():
         print(conditions)
         print("="*100)
     else:
-        print("Maaf, tidak ditemukan laptop yang sesuai dengan kriteria Anda. \Lakuan pemilihan laptop ulang")
+        print("Maaf, tidak ditemukan laptop yang sesuai dengan kriteria Anda. \Lakukan pemilihan laptop ulang")
         input("Tekan ENTER untuk melajutkan")
         laptop_spec()
 
@@ -433,11 +435,11 @@ def accessories():
         print("4. mouse")
         choice = input("Masukkan pilihan (1/2/3/4): ")
         if choice == '1':
-            tas = pd.read_csv('tas.csv')
             selected_accessories = "tas"
-            print("="*100)
+            tas = pd.read_csv('C:/Users/USER/Documents/semester 2/hola comp/tas.csv')
             print("Berikut Rekomendasi Tas:")
             print(tas)
+            print("="*100)
             input("Tekan ENTER untuk melanjutkan")
             clear_screen()
             shopping()
@@ -492,7 +494,15 @@ def accessories1():
         choice = input("Masukkan pilihan (1/2/3/4): ")
         if choice == '1':
             selected_accessories = "tas"
-            menu_accessories()
+            print("="*100)
+            tas = pd.read_csv('tas.csv')
+            print("Berikut Rekomendasi Keyboard:")
+            print(tas)
+            print("="*100)
+            input("Tekan ENTER untuk melanjutkan")
+            clear_screen()
+            shopping2()
+            
         elif choice == '2':
             selected_accessories = "keyboard"
             print("="*100)
@@ -506,10 +516,25 @@ def accessories1():
 
         elif choice == '3':
             selected_accessories = "headset"
-            menu_accessories()
+            print("="*100)
+            headset = pd.read_csv('headset.csv')
+            print("Berikut Rekomendasi Keyboard:")
+            print(headset)
+            print("="*100)
+            input("Tekan ENTER untuk melanjutkan")
+            clear_screen()
+            shopping2()
+
         elif choice == '4':
             selected_accessories = "mouse"
-            menu_accessories()
+            print("="*100)
+            mouse = pd.read_csv('mouse.csv')
+            print("Berikut Rekomendasi Keyboard:")
+            print(mouse)
+            print("="*100)
+            input("Tekan ENTER untuk melanjutkan")
+            clear_screen()
+            shopping2()
         else:
             print("Pilihan yang Anda masukkan belum benar, kembali ke menu awal.")
             accessories()  
@@ -651,7 +676,7 @@ def shopping():
             tambahkan_ke_keranjang()
             muat_keranjang()
             metode_pengiriman()
-        elif pilihan == '3':
+        elif pilihan == '2':
             clear_screen()
             exit()
             break
@@ -684,7 +709,6 @@ def shopping1():
         print()
 
 def shopping2():
-    clear_screen()
     menu_accessories()
     print("===================================== Toko Halo Comp ==================================")
     print("1. Tambahkan Produk ke Shopping Cart")
@@ -766,7 +790,7 @@ def sign_up():
         writer = csv.writer(file)
         writer.writerow([username, password])
         print("Akun berhasil dibuat!")
-        main_menu()
+        main_menu(username)
         return True 
 
 username = ""
