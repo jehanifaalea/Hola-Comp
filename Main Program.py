@@ -730,15 +730,15 @@ def sign_up():
         return True 
 
 
-with open('akun.csv', 'r') as file:
-    reader = csv.reader(file)
-    for row in reader:
-        if row[0] == username:
-            print("Username sudah terdaftar.")
-            if sign_up():
-                clear_screen()
-                main()
- 
+    with open('akun.csv', 'r') as file:
+        reader = csv.reader(file)
+        for row in reader:
+            if row[0] == username:
+                print("Username sudah terdaftar.")
+                if sign_up():
+                    clear_screen()
+                    main()
+                return False
     
 username = ""
 
