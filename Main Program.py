@@ -57,7 +57,7 @@ def laptop_processor():
         if choice == '1':
             clear_screen()
             selected_processor = "Intel"
-            input_prosesor = print("Masukkan prosesor Intel yang diinginkan: \n1. Intel i3 \n2. Intel i5 \n3. Intel core i3 \n4. Intel core i5 \n5. Intel core i7 \n6. Intel core i9 \n7. Intel UHD Graphics 600")
+            input_prosesor = print("Masukkan prosesor Intel yang diinginkan: \n1. Intel i3 \n2. Intel i5 \n3. Intel Core i3 \n4. Intel Core i5 \n5. Intel Core i7 \n6. Intel Core i9 \n7. Intel UHD Graphics 600")
             prosesor_intel = input("Masukkan pilihan (1/2/3/4/5/6/7): ")
             if prosesor_intel == '1':
                 selected_processor = 'Intel i3'
@@ -68,19 +68,19 @@ def laptop_processor():
                 clear_screen()
                 laptop_ram()
             if prosesor_intel == '3':
-                selected_processor = 'Intel core i3'
+                selected_processor = 'Intel Core i3'
                 clear_screen()
                 laptop_ram()
             if prosesor_intel == '4':
-                selected_processor = 'Intel core i5'
+                selected_processor = 'Intel Core i5'
                 clear_screen()
                 laptop_ram()
             if prosesor_intel == '5':
-                selected_processor = 'Intel core i7'
+                selected_processor = 'Intel Core i7'
                 clear_screen()
                 laptop_ram()
             if prosesor_intel == '6': 
-                selected_processor = 'Intel core i9'
+                selected_processor = 'Intel Core i9'
                 clear_screen()
                 laptop_ram()
             if prosesor_intel == '7':
@@ -193,7 +193,7 @@ def laptop_rom():
  
 
 def laptop_recommendation2():
-    laptops = pd.read_csv('data_laptop.csv')
+    laptops = pd.read_csv('D:/Hola Comp/Hola-Comp/data_laptop.csv')
 
     condition = laptops
 
@@ -211,7 +211,6 @@ def laptop_recommendation2():
         condition = condition[condition['rom'] == int(selected_rom)]
 
     if not condition.empty:
-        clear_screen()
         print("Berikut adalah rekomendasi laptop:")
         print("="*100)
         
@@ -279,39 +278,6 @@ def laptop_brand():
         print("Pilihan yang Anda masukkan belum benar, coba lagi.")
         laptop_brand()
 
-
-   
-def menu_accessories():
-    global aksesoris
-    aksesoris = pd.read_csv('Keyboard.csv')
-    aksesoris = pd.read_csv('mouse.csv')
-    aksesoris = pd.read_csv('tas.csv')
-    aksesoris = pd.read_csv('headset.csv')
-    aksesoris = pd.read_csv('data_aksesoris.csv')
-    print("="*100)
-    
-    conditions = aksesoris
-
-    if selected_accessories != "":
-        conditions = conditions[conditions['nama'] == selected_accessories]
-        print("="*100)
-        input("Tekan ENTER untuk melanjutkan")
-    elif selected_accessories != "":
-        conditions = conditions[['merek'] == selected_accessories]
-        print("="*100)
-        input("Tekan ENTER untuk melanjutkan")
-    elif selected_accessories != "":
-        conditions = conditions[['harga'] == selected_accessories]
-        print("="*100)
-        input("Tekan ENTER untuk melanjutkan")
-    elif not conditions.empty:
-        print("Berikut adalah rekomendasi Accessories:")
-        print(conditions)
-        print("="*100)
-    else:
-        print("Maaf, tidak ditemukan laptop yang sesuai dengan kriteria Anda. \Lakukan pemilihan laptop ulang")
-        input("Tekan ENTER untuk melajutkan")
-        laptop_spec()
 
 def exit():
     clear_screen()
@@ -389,6 +355,36 @@ def tampilkan_struk1():
     input("TEKAN ENTER UNTUK KELUAR")
     exit()
 
+def tampilkan_struk():
+    total_harga = harga_laptop + harga_aksesoris + biaya_pengiriman
+    now = datetime.now() 
+    resume = "\nNama Pelanggan: {}\nMerk Laptop: {}\nTipe Laptop: {}\nAcessories:{}\nHarga Laptop:{}\nHarga Aksesoris:{}\n".format(nama_pelanggan,nama_produk,tipe_laptop,nama_accessories,harga_laptop,harga_aksesoris)
+    file_resume = open("STRUK.txt","w")
+    file_resume.write(resume)
+    file_resume.close()
+    print("=============================================================")
+    print("                         HOLA COMP")
+    print("                      Struk Pembelian")
+    print("=============================================================")
+    print(now)
+    print("Nama Pelanggan:", nama_pelanggan)
+    print("Merk Laptop:", nama_produk)
+    print("Tipe Laptop:", tipe_laptop)
+    print("Acessories:", nama_accessories)
+    print("Tipe Aksesoris:",tipe_accessories)
+    print("Harga Laptop: Rp{:,}".format(harga_laptop))
+    if harga_aksesoris > 0:
+        print("Harga Aksesoris: Rp{:,}".format(harga_aksesoris))
+    print("Biaya Pengiriman :", biaya_pengiriman)
+    print("==================================")
+    print("Total Harga: Rp{:,}".format(total_harga))
+    print("=============================================================")
+    print("Terima kasih telah berbelanja di Hola Comp🙏")
+    print("=============================================================")
+    
+
+    input("TEKAN ENTER UNTUK KELUAR")
+    exit()
 
 def metode_pembayaran():
     print("=================== Metode Pembayaran ==============")
@@ -434,41 +430,45 @@ def accessories():
         print("3. headset")
         print("4. mouse")
         choice = input("Masukkan pilihan (1/2/3/4): ")
+        clear_screen()
         if choice == '1':
             selected_accessories = "tas"
-            tas = pd.read_csv('C:/Users/USER/Documents/semester 2/hola comp/tas.csv')
-            print("Berikut Rekomendasi Tas:")
+            print("="*100)
+            tas = pd.read_csv('D:/Hola Comp/Hola-Comp/tas.csv')
+            print("Berikut Rekomendasi Keyboard:")
             print(tas)
             print("="*100)
             input("Tekan ENTER untuk melanjutkan")
-            clear_screen()
             shopping()
+            
         elif choice == '2':
             selected_accessories = "keyboard"
             print("="*100)
-            key = pd.read_csv('Keyboard.csv')
+            key = pd.read_csv('D:/Hola Comp/Hola-Comp/Keyboard.csv')
             print("Berikut Rekomendasi Keyboard:")
             print(key)
             print("="*100)
             input("Tekan ENTER untuk melanjutkan")
-            clear_screen()
             shopping()
 
         elif choice == '3':
             selected_accessories = "headset"
-            headset = pd.read_csv('headset.csv')
-            print("Berikut Rekomendasi Headset:")
+            print("="*100)
+            headset = pd.read_csv('D:/Hola Comp/Hola-Comp/headset.csv')
+            print("Berikut Rekomendasi Keyboard:")
             print(headset)
+            print("="*100)
             input("Tekan ENTER untuk melanjutkan")
-            clear_screen()
             shopping()
+
         elif choice == '4':
             selected_accessories = "mouse"
-            mouse = pd.read_csv('mouse.csv')
-            print("Berikut Rekomendasi Mouse:")
+            print("="*100)
+            mouse = pd.read_csv('D:/Hola Comp/Hola-Comp/mouse.csv')
+            print("Berikut Rekomendasi Keyboard:")
             print(mouse)
+            print("="*100)
             input("Tekan ENTER untuk melanjutkan")
-            clear_screen()
             shopping()
         else:
             print("Pilihan yang Anda masukkan belum benar, kembali ke menu awal.")
@@ -492,15 +492,15 @@ def accessories1():
         print("3. headset")
         print("4. mouse")
         choice = input("Masukkan pilihan (1/2/3/4): ")
+        clear_screen()
         if choice == '1':
             selected_accessories = "tas"
             print("="*100)
-            tas = pd.read_csv('tas.csv')
+            tas = pd.read_csv('D:/Hola Comp/Hola-Comp/tas.csv')
             print("Berikut Rekomendasi Keyboard:")
             print(tas)
             print("="*100)
             input("Tekan ENTER untuk melanjutkan")
-            clear_screen()
             shopping2()
             
         elif choice == '2':
@@ -511,29 +511,26 @@ def accessories1():
             print(key)
             print("="*100)
             input("Tekan ENTER untuk melanjutkan")
-            clear_screen()
             shopping2()
 
         elif choice == '3':
             selected_accessories = "headset"
             print("="*100)
-            headset = pd.read_csv('headset.csv')
+            headset = pd.read_csv('D:/Hola Comp/Hola-Comp/headset.csv')
             print("Berikut Rekomendasi Keyboard:")
             print(headset)
             print("="*100)
             input("Tekan ENTER untuk melanjutkan")
-            clear_screen()
             shopping2()
 
         elif choice == '4':
             selected_accessories = "mouse"
             print("="*100)
-            mouse = pd.read_csv('mouse.csv')
+            mouse = pd.read_csv('D:/Hola Comp/Hola-Comp/mouse.csv')
             print("Berikut Rekomendasi Keyboard:")
             print(mouse)
             print("="*100)
             input("Tekan ENTER untuk melanjutkan")
-            clear_screen()
             shopping2()
         else:
             print("Pilihan yang Anda masukkan belum benar, kembali ke menu awal.")
@@ -555,10 +552,13 @@ def tambahkan_ke_keranjang():
     global tipe_accessories
     global harga_aksesoris
     nama_produk = input("Masukkan Merk Laptop (Tekan Enter Untuk Melewati): ")
+    if nama_produk != selected_brand:
+        print("Tidak cocok! ulangi")
+        tambahkan_ke_keranjang()
     tipe_laptop = input("Masukkan Tipe laptop (Tekan Enter Untuk Melewati): ")
     harga_laptop = int(input("Harga (Tekan 0 Untuk Melewati): "))
-    nama_accessories = input("masukkan Merk Aksesoris (Tekan Enter untuk Melewati): ")
-    tipe_accessories = input("Masukkan Tipe Aksesoris (Tekan Enter Untuk Melewati)")
+    nama_accessories = input("Masukkan Merk Aksesoris (Tekan Enter untuk Melewati): ")
+    tipe_accessories = input("Masukkan Tipe Aksesoris (Tekan Enter Untuk Melewati): ")
     harga_aksesoris = int(input("Masukkan Harga (Tekan 0 Untuk Melewati): "))
     keranjang = {
         'Merk Laptop': nama_produk,
@@ -576,61 +576,6 @@ def tambahkan_ke_keranjang():
     print(f"{nama_produk,tipe_laptop,nama_accessories,tipe_accessories} telah ditambahkan ke keranjang.")
     clear_screen()
 
-'''def tampilkan_struk1():
-    total_harga = harga_laptop + harga_aksesoris
-    now = datetime.now() 
-    resume = "\nNama Pelanggan: {}\nMerk Laptop: {}\nTipe Laptop: {}\nAcessories:{}\nHarga Laptop:{}\nHarga Aksesoris:{}\n".format(nama_pelanggan, nama_produk,tipe_laptop,nama_accessories,harga_laptop,harga_aksesoris)
-    file_resume = open("STRUK.txt", "w")
-    file_resume.write(resume)
-    print("=============================================================")
-    print("                         HOLA COMP")
-    print("                      Struk Pembelian")
-    print("=============================================================")
-    print(now)
-    print("Nama Pelanggan:", nama_pelanggan)
-    print("Merk Laptop:", nama_produk)
-    print("Tipe Laptop:", tipe_laptop)
-    print("Acessories:", nama_accessories)
-    print("Tipe Aksesoris:",tipe_accessories)
-    print("Harga Laptop: Rp{:,}".format(harga_laptop))
-    if harga_aksesoris > 0:
-        print("Harga Aksesoris: Rp{:,}".format(harga_aksesoris))
-    print("==================================")
-    print("Total Harga: Rp{:,}".format(total_harga))
-    print("=============================================================")
-    print("Terima kasih telah berbelanja di Hola Comp🙏")
-    print("=============================================================")
-    
-
-    input("TEKAN ENTER UNTUK KELUAR")
-    exit()'''
-
-'''def tampilkan_struk1():
-    total_harga = harga_laptop + harga_aksesoris
-    now = datetime.now() 
-    file = open("STRUK.txt","w")
-    file.write(f"\nNama Pelanggan: {nama_pelanggan}\nMerk Laptop: {nama_produk}\nTipe Laptop: {tipe_laptop}\nAcessories:{nama_accessories}\nHarga Laptop:{harga_laptop}\nHarga Aksesoris:{harga_aksesoris}\n".format(nama_pelanggan,
-            nama_produk,tipe_laptop,nama_accessories,harga_laptop,harga_aksesoris))
-    print("=============================================================")
-    print("                         HOLA COMP")
-    print("                      Struk Pembelian")
-    print("=============================================================")
-    print(now)
-    print("Nama Pelanggan:", nama_pelanggan)
-    print("Merk Laptop:", nama_produk)
-    print("Tipe Laptop:", tipe_laptop)
-    print("Acessories:", nama_accessories)
-    print("Tipe Aksesoris:",tipe_accessories)
-    print("Harga Laptop: Rp{:,}".format(harga_laptop))
-    if harga_aksesoris > 0:
-        print("Harga Aksesoris: Rp{:,}".format(harga_aksesoris))
-    print("==================================")
-    print("Total Harga: Rp{:,}".format(total_harga))
-    print("=============================================================")
-    print("Terima kasih telah berbelanja di Hola Comp🙏")
-    print("=============================================================")
-    input("TEKAN ENTER UNTUK KELUAR")
-    exit()'''
 
 def tampilkan_keranjang(keranjang):
     print("===============================================")
@@ -663,15 +608,14 @@ def muat_keranjang():
     print(muat_keranjang())
 
 def shopping():
-    clear_screen()
     laptop_recommendation2()
-    menu_accessories()
+    #menu_accessories()
     print("===================================== Toko Halo Comp ==================================")
     print("1. Tambahkan Produk ke Shopping Cart")
     print("2. Keluar")
     while True :
         pilihan = input("Masukkan pilihan (1/2): ")
-       
+
         if pilihan == '1':
             tambahkan_ke_keranjang()
             muat_keranjang()
@@ -687,7 +631,6 @@ def shopping():
 
 
 def shopping1():
-    clear_screen()
     laptop_recommendation2()
     print("===================================== Toko Halo Comp ==================================")
     print("1. Tambahkan Produk ke Shopping Cart")
@@ -709,7 +652,7 @@ def shopping1():
         print()
 
 def shopping2():
-    menu_accessories()
+    #menu_accessories()
     print("===================================== Toko Halo Comp ==================================")
     print("1. Tambahkan Produk ke Shopping Cart")
     print("2. Keluar")
